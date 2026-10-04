@@ -10,9 +10,10 @@ import type { NavItem } from "@/types";
 type MobileMenuProps = {
   items: NavItem[];
   cta: NavItem;
+  labels: { nav: string; open: string; close: string };
 };
 
-export function MobileMenu({ items, cta }: MobileMenuProps) {
+export function MobileMenu({ items, cta, labels }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
@@ -46,7 +47,7 @@ export function MobileMenu({ items, cta }: MobileMenuProps) {
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
         aria-controls={panelId}
-        aria-label={open ? "Stäng meny" : "Öppna meny"}
+        aria-label={open ? labels.close : labels.open}
         className="inline-flex size-11 items-center justify-center rounded-control text-ink transition-colors hover:bg-sand"
       >
         {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
@@ -60,7 +61,7 @@ export function MobileMenu({ items, cta }: MobileMenuProps) {
           "border-t border-line px-5 pt-4 pb-8 sm:px-8",
         )}
       >
-        <nav aria-label="Mobilmeny">
+        <nav aria-label={labels.nav}>
           <ul className="divide-y divide-line">
             {items.map((item) => (
               <li key={item.href}>

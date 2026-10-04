@@ -1,21 +1,30 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { mainNav, primaryCta } from "@/data/site";
+import { homeHref, sectionHref } from "@/data/site";
+import { getDictionary, getLocale } from "@/i18n/get-dictionary";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
 
-export function Navbar() {
+export async function Navbar() {
+  const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
+  const items = dict.nav.items.map((item) => ({
+    label: item.label,
+    href: sectionHref(locale, item.section),
+  }));
+  const cta = { label: dict.nav.cta.label, href: sectionHref(locale, dict.nav.cta.section) };
+
   return (
     // The blur sits on a pseudo-element: backdrop-filter on the header itself would
     // become the containing block for the fixed mobile menu panel.
     <header className="sticky top-0 z-40 border-b border-line before:absolute before:inset-0 before:-z-10 before:bg-canvas/85 before:backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-6 lg:h-18">
-        <Logo />
+        <Logo href={homeHref(locale)} label={dict.common.homeLinkLabel} />
 
-        <nav aria-label="Huvudmeny" className="hidden lg:block">
+        <nav aria-label={dict.nav.mainLabel} className="hidden lg:block">
           <ul className="flex items-center gap-1">
-            {mainNav.map((item) => (
+            {items.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -28,11 +37,20 @@ export function Navbar() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
+          <LanguageSwitcher current={locale} />
           <div className="hidden sm:block">
-            <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
+            <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
           </div>
-          <MobileMenu items={mainNav} cta={primaryCta} />
+          <MobileMenu
+            items={items}
+            cta={cta}
+            labels={{
+              nav: dict.nav.mobileLabel,
+              open: dict.nav.openMenu,
+              close: dict.nav.closeMenu,
+            }}
+          />
         </div>
       </Container>
     </header>

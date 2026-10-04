@@ -10,7 +10,7 @@ Next.js (App Router), TypeScript, Tailwind CSS v4, lucide-react.
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
+npm run dev        # http://localhost:3000 (redirects to /sv, English at /en)
 ```
 
 ## Scripts

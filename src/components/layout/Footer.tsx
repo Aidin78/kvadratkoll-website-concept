@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { footerNav, site } from "@/data/site";
+import { homeHref, sectionHref, site } from "@/data/site";
+import { getDictionary, getLocale } from "@/i18n/get-dictionary";
 import { Logo } from "./Logo";
 
-export function Footer() {
+export async function Footer() {
+  const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
   const year = new Date().getFullYear();
 
   return (
@@ -11,18 +13,18 @@ export function Footer() {
       <Container className="py-14 md:py-20">
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-12">
           <div className="col-span-2 md:col-span-5">
-            <Logo />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">{site.tagline}.</p>
+            <Logo href={homeHref(locale)} label={dict.common.homeLinkLabel} />
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">{dict.footer.tagline}</p>
           </div>
 
-          {footerNav.map((group) => (
+          {dict.footer.groups.map((group) => (
             <nav key={group.title} aria-label={group.title} className="md:col-span-3 lg:col-span-2">
               <h2 className="text-sm font-semibold">{group.title}</h2>
               <ul className="mt-3">
                 {group.links.map((link) => (
                   <li key={link.label}>
                     <Link
-                      href={link.href}
+                      href={sectionHref(locale, link.section)}
                       className="inline-flex min-h-10 items-center text-sm text-muted transition-colors hover:text-ink"
                     >
                       {link.label}
@@ -38,9 +40,7 @@ export function Footer() {
           <p>
             © {year} {site.name}
           </p>
-          {site.isConcept && (
-            <p>Inofficiellt designkoncept, inte Kvadratkolls officiella webbplats.</p>
-          )}
+          {site.isConcept && <p>{dict.common.conceptNotice}</p>}
         </div>
       </Container>
     </footer>

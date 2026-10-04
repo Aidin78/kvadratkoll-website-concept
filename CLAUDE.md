@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Unofficial frontend redesign concept for Kvadratkoll.se (Swedish property measurement). UI only: no backend. Site copy is Swedish (`<html lang="sv">`). The site is set to `noindex` because it is a concept.
+Unofficial frontend redesign concept for Kvadratkoll.se (Swedish property measurement). UI only: no backend. The site is bilingual: Swedish (primary) and English. The site is set to `noindex` because it is a concept.
 
 Do not invent business claims (prices, certifications, customer counts, reviews, statistics, addresses, guarantees). Use clearly marked placeholder copy instead.
 
@@ -21,15 +21,17 @@ There is no test suite. After changes, run lint, typecheck, and build.
 
 ## Architecture
 
-- `src/app/`: App Router. `layout.tsx` renders the skip link, `Navbar`, `<main id="main">` and `Footer` around every page, and loads fonts (Inter body, Inter Tight display) as CSS variables.
+- **i18n routing:** every route lives under `src/app/[lang]/` (`sv` | `en`, configured in `src/i18n/config.ts`). `[lang]/layout.tsx` is the root layout: it sets `<html lang>`, has `dynamicParams = false` (unknown locales give a 404), and renders the skip link, `Navbar`, `<main id="main">` and `Footer`. `next.config.ts` redirects `/` to `/sv`.
+- **Copy:** every translatable string lives in `src/i18n/dictionaries/{sv,en}.ts`, both typed by `Dictionary` (`src/i18n/types.ts`), so adding a key means adding it to both. Server Components call `getDictionary()` / `getLocale()` from `src/i18n/get-dictionary.ts`. These read the locale through `next/root-params`, so `lang` is not prop-drilled. Client Components can't use them: pass strings down as props (see `MobileMenu`'s `labels`).
+- **Links:** build internal hrefs with `homeHref(locale)` / `sectionHref(locale, sectionId)` from `src/data/site.ts`. Homepage section anchors are the `SectionId` union in `src/types`, and are the same in both locales.
 - `src/app/globals.css`: the design system. Tailwind v4 `@theme` tokens (colors `canvas/surface/sand/line/ink/muted/accent`, `rounded-control` / `rounded-card`, `max-w-site`, `leading-display`, `shadow-soft`), base styles (focus ring, heading font), the `section-y` utility for section padding, and reduced-motion handling. Add new tokens here instead of using arbitrary Tailwind values.
-- `src/data/`: structured content kept separate from components. `site.ts` holds site meta, the `sectionIds` homepage anchors (shared by nav and page), `primaryCta`, and nav/footer links.
-- `src/components/ui/`: primitives. `Button.tsx` exports `buttonStyles()` plus `Button` and `ButtonLink` (a Next `Link`) that share variants. Use `ButtonLink` for navigation CTAs.
-- `src/components/layout/`: `Navbar` (server) + `MobileMenu` (the only client component so far), `Footer`, `Logo` (placeholder wordmark).
-- `src/components/sections/`: homepage sections. `app/page.tsx` renders `Hero` and then a `plannedSections` list of placeholders. Replace each placeholder with its own section component, keeping its `id`.
+- `src/components/ui/`: primitives that receive props only. `Button.tsx` exports `buttonStyles()` plus `Button` and `ButtonLink` (a Next `Link`) that share variants. Use `ButtonLink` for navigation CTAs.
+- `src/components/layout/`: `Navbar`, `Footer` (async server), `MobileMenu` and `LanguageSwitcher` (client), `Logo` (placeholder wordmark).
+- `src/components/sections/`: homepage sections (async Server Components that read their own dictionary slice). `[lang]/page.tsx` renders `Hero`, `TrustIndicators`, `Services`, and then placeholders from `dict.plannedSections`. Replace each placeholder with its own section component, using its `SectionId` as the section `id`.
+- `TrustIndicator.confirmed: false` renders a `*` placeholder marker plus a footnote. Keep unconfirmed figures marked this way.
 - `src/lib/cn.ts`: minimal class-join helper (no clsx/tailwind-merge). It does not resolve conflicting classes, so don't pass a `className` that overrides a utility already in `buttonStyles` (e.g. `hidden` vs `inline-flex`). Wrap the element instead.
 
-Conventions: Server Components by default, and `"use client"` only for interaction. Primary conversion action is "Boka mätning". Touch targets are at least 44px (`min-h-11`).
+Conventions: Server Components by default, and `"use client"` only for interaction. Primary conversion action is "Boka mätning" / "Book a measurement". Touch targets are at least 44px (`min-h-11`).
 
 ## Commit rules
 
