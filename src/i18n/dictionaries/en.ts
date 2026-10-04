@@ -1,6 +1,6 @@
 import type { Dictionary } from "../types";
 
-// Facts and prices are taken from kvadratkoll.se (fetched October 2026). The copy is rewritten for the concept.
+// Facts and prices are taken from kvadratkoll.se (fetched October 2026). The copy is rewritten for the redesign.
 const en: Dictionary = {
   meta: {
     title: "Kvadratkoll | Area measurement in Stockholm",
@@ -10,7 +10,7 @@ const en: Dictionary = {
   common: {
     skipToContent: "Skip to content",
     homeLinkLabel: "Kvadratkoll, go to homepage",
-    conceptNotice: "Unofficial design concept, not the official Kvadratkoll website.",
+    conceptNotice: "Design proposal for Kvadratkoll. Not the live website.",
   },
   nav: {
     mainLabel: "Main menu",
@@ -31,7 +31,9 @@ const en: Dictionary = {
     description:
       "We measure apartments, houses and commercial premises according to SS 21054:2020. You get a measurement certificate to use when selling, buying or leasing, often the same day.",
     secondaryCta: { label: "View pricing", section: "pricing" },
-    imagePlaceholder: "Image: home / architecture (placeholder)",
+    imageAlt: "Bright Scandinavian dining room with large paned windows and herringbone parquet",
+    badgeAlt: "SIS Swedish Standards Institute, certified area measurer",
+    badgeCaption: "Certified area measurers. Every measurement follows SS 21054:2020.",
   },
   trust: {
     title: "Kvadratkoll at a glance",
@@ -51,7 +53,7 @@ const en: Dictionary = {
     items: [
       {
         id: "residential",
-        icon: "house",
+        imageAlt: "Bright living room with a dining table and sofa in an apartment",
         title: "Homes",
         description:
           "Area measurement of apartments and houses before a sale or purchase. Most homes are compared on price per square metre, so the area has to be right.",
@@ -63,14 +65,14 @@ const en: Dictionary = {
       },
       {
         id: "commercial",
-        icon: "building",
+        imageAlt: "Workspace with a desk and lamp in an office",
         title: "Commercial premises",
         description: "Correct area figures benefit both tenant and landlord when the rent is set.",
         features: ["Offices, shops and other premises", "Basis for setting rent", "Quote for larger properties"],
       },
       {
         id: "floor-plans",
-        icon: "floor-plan",
+        imageAlt: "3D floor plan on top of dimensioned drawings",
         title: "Floor plans",
         description:
           "New scaled floor plans made with a laser measurer and AutoCAD, for example when old drawings no longer match or for a building notification.",
@@ -114,6 +116,7 @@ const en: Dictionary = {
     title: "A certificate you can rely on",
     description:
       "When selling, the seller is personally liable for the stated area. Without a certificate from a certified area measurer, the figure is unreliable.",
+    imageAlt: "Hand holding a Leica DISTO D8 laser measurer showing a measured distance",
     items: [
       {
         icon: "certified",

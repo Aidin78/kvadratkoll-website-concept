@@ -32,12 +32,12 @@ export type TrustIndicator = {
   confirmed: boolean;
 };
 
-export type ServiceIcon = "house" | "building" | "floor-plan";
+export type ServiceId = "residential" | "commercial" | "floor-plans";
 
 export type Service = {
-  id: string;
-  icon: ServiceIcon;
+  id: ServiceId;
   title: string;
+  imageAlt: string;
   description: string;
   features: string[];
 };

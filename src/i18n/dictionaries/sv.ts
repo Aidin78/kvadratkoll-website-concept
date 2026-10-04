@@ -1,6 +1,6 @@
 import type { Dictionary } from "../types";
 
-// Facts and prices are taken from kvadratkoll.se (fetched October 2026). The copy is rewritten for the concept.
+// Facts and prices are taken from kvadratkoll.se (fetched October 2026). The copy is rewritten for the redesign.
 const sv: Dictionary = {
   meta: {
     title: "Kvadratkoll | Areamätare i Stockholm",
@@ -10,7 +10,7 @@ const sv: Dictionary = {
   common: {
     skipToContent: "Hoppa till innehållet",
     homeLinkLabel: "Kvadratkoll, till startsidan",
-    conceptNotice: "Inofficiellt designkoncept, inte Kvadratkolls officiella webbplats.",
+    conceptNotice: "Designförslag för Kvadratkoll. Inte den publicerade webbplatsen.",
   },
   nav: {
     mainLabel: "Huvudmeny",
@@ -31,7 +31,9 @@ const sv: Dictionary = {
     description:
       "Vi mäter lägenheter, hus och lokaler enligt SS 21054:2020. Du får ett mätbevis att använda vid försäljning, köp eller uthyrning, ofta samma dag.",
     secondaryCta: { label: "Se priser", section: "pricing" },
-    imagePlaceholder: "Bild: bostad / arkitektur (platshållare)",
+    imageAlt: "Ljust skandinaviskt matrum med stora spröjsade fönster och fiskbensparkett",
+    badgeAlt: "SIS Swedish Standards Institute, diplomerad areamätare",
+    badgeCaption: "Diplomerade areamätare. Alla mätningar görs enligt SS 21054:2020.",
   },
   trust: {
     title: "Kvadratkoll i korthet",
@@ -51,7 +53,7 @@ const sv: Dictionary = {
     items: [
       {
         id: "residential",
-        icon: "house",
+        imageAlt: "Ljust vardagsrum med matbord och soffa i en lägenhet",
         title: "Bostäder",
         description:
           "Areamätning av lägenheter, hus och villor inför försäljning eller köp. De flesta bostäder jämförs på pris per kvadratmeter, så arean måste stämma.",
@@ -63,7 +65,7 @@ const sv: Dictionary = {
       },
       {
         id: "commercial",
-        icon: "building",
+        imageAlt: "Arbetsplats med skrivbord och lampa i en kontorslokal",
         title: "Lokaler",
         description:
           "Korrekta areauppgifter är till nytta för både hyresgäst och hyresvärd när hyran ska sättas.",
@@ -75,7 +77,7 @@ const sv: Dictionary = {
       },
       {
         id: "floor-plans",
-        icon: "floor-plan",
+        imageAlt: "Planritning i 3D ovanpå ritningar med måttsättning",
         title: "Planritningar",
         description:
           "Nya skalenliga planritningar framtagna med lasermätare och AutoCAD, till exempel när gamla ritningar inte längre stämmer eller inför en bygganmälan.",
@@ -119,6 +121,7 @@ const sv: Dictionary = {
     title: "Ett mätbevis du kan lita på",
     description:
       "Vid en försäljning är säljaren personligt ansvarig för areauppgiften. Utan mätbevis från en diplomerad areamätare är uppgiften opålitlig.",
+    imageAlt: "Leica DISTO D8 lasermätare i handen som visar ett uppmätt avstånd",
     items: [
       {
         icon: "certified",

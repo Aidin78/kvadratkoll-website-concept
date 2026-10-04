@@ -36,7 +36,9 @@ export type Dictionary = {
     title: string;
     description: string;
     secondaryCta: SectionLink;
-    imagePlaceholder: string;
+    imageAlt: string;
+    badgeAlt: string;
+    badgeCaption: string;
   };
   trust: {
     /** Visually hidden heading for the trust strip. */
@@ -60,6 +62,7 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     description: string;
+    imageAlt: string;
     items: Benefit[];
   };
   example: {

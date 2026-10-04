@@ -1,6 +1,8 @@
 import { BadgeCheck, CalendarCheck, FileText, Ruler, type LucideIcon } from "lucide-react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { images } from "@/data/images";
 import { getDictionary } from "@/i18n/get-dictionary";
 import type { BenefitIcon } from "@/types";
 
@@ -25,9 +27,16 @@ export async function WhyUs() {
             title={why.title}
             description={why.description}
           />
+          <Image
+            src={images.laserMeasurer}
+            alt={why.imageAlt}
+            placeholder="blur"
+            sizes="400px"
+            className="mt-10 hidden aspect-4/5 w-full max-w-sm rounded-card object-cover lg:block"
+          />
         </div>
 
-        <ul className="grid gap-x-10 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-1">
+        <ul className="grid content-start gap-x-10 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-1">
           {why.items.map((item) => {
             const Icon = benefitIcons[item.icon];
             return (

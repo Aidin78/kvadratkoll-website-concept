@@ -12,7 +12,7 @@ export const site = {
   email: "info@kvadratkoll.se",
   phone: "070 353 96 39",
   phoneHref: "tel:+46703539639",
-  // Unofficial redesign concept, not the official website.
+  // Redesign proposal: shows the "not the live website" notice in the footer.
   isConcept: true,
 } as const;
 
