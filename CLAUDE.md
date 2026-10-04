@@ -41,6 +41,7 @@ Conventions: Server Components by default, and `"use client"` only for interacti
 - Commit and push to `main` by default once a change is complete and lint, typecheck and build pass. No need to ask first.
 - Split work into meaningful commits by topic.
 - Commit as `aidin78 <sahebi.aidin78@gmail.com>` (author and committer). This is the address linked to the GitHub account.
+- Commit signing is turned off for this repo (`git config commit.gpgsign false`). The cloud environment's own signing key is not on the GitHub account, so its signatures show as unverified.
 - Commit messages are exactly one line, a single Conventional Commit title: `type(scope): summary` (e.g. `feat(home): add responsive hero section`).
 - No commit body or description, no `Co-Authored-By` trailer, and no Claude/AI/assistant/generator attribution of any kind (e.g. "Generated with Claude").
 
