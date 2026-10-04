@@ -12,6 +12,8 @@ export const site = {
   email: "info@kvadratkoll.se",
   phone: "070 353 96 39",
   phoneHref: "tel:+46703539639",
+  /** Example floor plan drawing published on kvadratkoll.se/ritning. */
+  sampleDrawingHref: "/files/kvadratkoll-exempelritning.pdf",
   // Redesign proposal: shows the "not the live website" notice in the footer.
   isConcept: true,
 } as const;

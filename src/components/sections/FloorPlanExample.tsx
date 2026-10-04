@@ -1,7 +1,8 @@
-import { Check } from "lucide-react";
+import { Check, FileDown } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { floorPlanExample as plan } from "@/data/floor-plan-example";
+import { site } from "@/data/site";
 import type { Locale } from "@/i18n/config";
 import { getDictionary, getLocale } from "@/i18n/get-dictionary";
 import type { Dictionary } from "@/i18n/types";
@@ -53,12 +54,23 @@ export async function FloorPlanExample() {
               </div>
             ))}
           </dl>
+
+          <a
+            href={site.sampleDrawingHref}
+            className="group mt-8 inline-flex min-h-11 items-start gap-3 rounded-control font-medium text-accent"
+          >
+            <FileDown className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
+            <span>
+              <span className="underline-offset-4 group-hover:underline">{example.sampleLink}</span>{" "}
+              <span className="text-sm font-normal whitespace-nowrap text-muted">({example.sampleLinkMeta})</span>
+            </span>
+          </a>
         </div>
 
         {/* Full-bleed on mobile so the drawing's labels stay legible. */}
         <figure className="-mx-5 border-y border-line bg-canvas p-3 sm:mx-0 sm:rounded-card sm:border sm:p-8 lg:order-1 lg:col-span-7">
           <FloorPlanDrawing locale={locale} example={example} />
-          <figcaption className="mt-4 flex flex-col gap-3 px-2 sm:px-0 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+          <figcaption className="mt-4 flex flex-col gap-3 px-2 text-xs text-muted sm:px-0 sm:flex-row sm:items-center sm:justify-between">
             <span>{example.figureCaption}</span>
             <span className="flex shrink-0 gap-4">
               <span className="inline-flex items-center gap-2">
