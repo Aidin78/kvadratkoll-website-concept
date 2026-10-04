@@ -3,39 +3,44 @@
 /*
  * Design tokens. Tailwind exposes each one as a utility,
  * e.g. --color-ink → text-ink / bg-ink, --radius-card → rounded-card.
+ * Direction: architectural drawing. Cool stone paper, graphite ink, one deep blue accent.
  */
 @theme {
-  /* Warm Scandinavian neutrals */
-  --color-canvas: #f7f5f0;
+  /* Paper and surfaces */
+  --color-canvas: #f3f3f1;
   --color-surface: #ffffff;
-  --color-sand: #efebe3;
-  --color-line: #e3ded4;
-  --color-line-strong: #cfc8bb;
+  --color-sand: #e8e8e4;
+  --color-line: #d9d9d4;
+  --color-line-strong: #b4b4ad;
+  /* Faint graph-paper grid used behind drawings */
+  --color-grid: #ebebe7;
 
-  /* Typography colors (both pass WCAG AA on canvas and surface) */
-  --color-ink: #16181b;
-  --color-muted: #575c63;
+  /* Ink. Muted passes WCAG AA on canvas and surface. */
+  --color-ink: #141618;
+  --color-muted: #5a5e63;
 
-  /* Single brand accent: deep spruce green */
-  --color-accent: #1e4b42;
-  --color-accent-hover: #163a33;
-  --color-accent-soft: #e3ece8;
+  /* Single accent: deep Scandinavian blue, as in construction drawings */
+  --color-accent: #1e3a5f;
+  --color-accent-hover: #162c48;
+  --color-accent-soft: #dde4ed;
+  /* Accent tint that stays legible on graphite and on the accent itself */
+  --color-accent-light: #a9c0dc;
 
   /* Form error text */
   --color-danger: #b42318;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Technical annotations: numbering, dimensions, labels */
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
-  /* Restrained radius scale: controls (buttons, inputs) and cards */
-  --radius-control: 0.5rem;
-  --radius-card: 0.875rem;
+  /* Disciplined radius: almost square, like drawn geometry */
+  --radius-control: 0.125rem;
+  --radius-card: 0.25rem;
 
-  --leading-display: 1.05;
+  --leading-display: 1.02;
 
-  --shadow-soft: 0 1px 2px rgb(22 24 27 / 0.04), 0 8px 24px -12px rgb(22 24 27 / 0.12);
-
-  --container-site: 75rem;
+  --container-site: 80rem;
 }
 
 @layer base {
@@ -80,7 +85,39 @@
 
 /* Consistent vertical rhythm for page sections */
 @utility section-y {
-  @apply py-20 md:py-28;
+  @apply py-20 md:py-28 lg:py-32;
+}
+
+/* Small uppercase technical label, as on a drawing's title block */
+@utility label-mono {
+  @apply font-mono text-xs font-medium tracking-widest uppercase;
+}
+
+/* Graph paper: a fine 24px grid behind drawings */
+@utility bg-graph {
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* A measuring ruler: minor ticks every 12px, major ticks every 120px. Colour comes from currentColor. */
+@utility ruler {
+  height: 0.75rem;
+  background-image:
+    repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 12px);
+  background-size:
+    100% 100%,
+    100% 45%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+/* Vertical dimension labels, read bottom to top */
+@utility text-vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
 }
 
 @media (prefers-reduced-motion: reduce) {

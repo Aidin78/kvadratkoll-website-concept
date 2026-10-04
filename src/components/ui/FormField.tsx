@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 
 /** Shared styles for text inputs, selects and textareas. 16px text prevents iOS zoom on focus. */
 export const fieldStyles =
-  "block min-h-11 w-full rounded-control border border-line-strong bg-surface px-3.5 py-2.5 text-base text-ink transition-colors hover:border-ink";
+  "block min-h-12 w-full rounded-control border border-line-strong bg-surface px-3.5 py-2.5 text-base text-ink transition-colors hover:border-ink focus:border-ink";
 
 type FormFieldProps = {
   id: string;

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Inter_Tight } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { locales } from "@/i18n/config";
@@ -14,6 +14,12 @@ const inter = Inter({
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 // Only the configured locales exist; any other first segment is a 404.
@@ -40,7 +46,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
 
   return (
-    <html lang={locale} className={`${inter.variable} ${interTight.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${interTight.variable} ${plexMono.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"
