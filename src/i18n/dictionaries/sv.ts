@@ -166,6 +166,8 @@ const sv: Dictionary = {
     secondaryArea: "Biarea (BIA)",
     figureLabel: "Exempel på planritning av en lägenhet med area per rum",
     figureCaption: "Illustrativt exempel. Måtten är påhittade och visar endast formatet.",
+    sampleLink: "Se en riktig exempelritning från Kvadratkoll",
+    sampleLinkMeta: "PDF, 31 kB",
     rooms: {
       living: "Vardagsrum",
       kitchen: "Kök",
@@ -292,6 +294,14 @@ const sv: Dictionary = {
       demoNotice:
         "Konceptversion: formuläret skickar inga uppgifter. Mejla eller ring för att boka på riktigt.",
     },
+  },
+  notFound: {
+    metaTitle: "Sidan hittades inte",
+    eyebrow: "404",
+    title: "Sidan hittades inte",
+    description:
+      "Sidan du letar efter finns inte eller har flyttats. Gå till startsidan eller boka en mätning direkt.",
+    homeLink: "Till startsidan",
   },
   footer: {
     tagline: "Diplomerade areamätare i Stockholm.",

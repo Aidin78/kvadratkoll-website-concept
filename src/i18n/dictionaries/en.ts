@@ -161,6 +161,8 @@ const en: Dictionary = {
     secondaryArea: "Secondary area (BIA)",
     figureLabel: "Example floor plan of an apartment with the area of each room",
     figureCaption: "Illustrative example. The measurements are made up and only show the format.",
+    sampleLink: "See a real example drawing by Kvadratkoll",
+    sampleLinkMeta: "PDF, 31 kB",
     rooms: {
       living: "Living room",
       kitchen: "Kitchen",
@@ -284,6 +286,14 @@ const en: Dictionary = {
       errorText: "Something went wrong. Please try again or email us directly.",
       demoNotice: "Concept version: the form does not send any data. Email or call to book for real.",
     },
+  },
+  notFound: {
+    metaTitle: "Page not found",
+    eyebrow: "404",
+    title: "Page not found",
+    description:
+      "The page you are looking for does not exist or has moved. Go to the homepage or book a measurement directly.",
+    homeLink: "Go to homepage",
   },
   footer: {
     tagline: "Certified area measurers in Stockholm.",

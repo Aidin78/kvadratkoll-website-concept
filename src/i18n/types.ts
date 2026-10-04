@@ -76,6 +76,8 @@ export type Dictionary = {
     secondaryArea: string;
     figureLabel: string;
     figureCaption: string;
+    sampleLink: string;
+    sampleLinkMeta: string;
     rooms: Record<FloorPlanRoomId, string>;
   };
   pricing: {
@@ -126,6 +128,13 @@ export type Dictionary = {
       errorText: string;
       demoNotice: string;
     };
+  };
+  notFound: {
+    metaTitle: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    homeLink: string;
   };
   footer: {
     tagline: string;
