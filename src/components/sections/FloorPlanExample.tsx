@@ -1,4 +1,4 @@
-import { Check, FileDown } from "lucide-react";
+import { FileDown } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { floorPlanExample as plan } from "@/data/floor-plan-example";
@@ -14,79 +14,94 @@ export async function FloorPlanExample() {
 
   const sumArea = (kind: "boa" | "bia") =>
     plan.rooms.filter((room) => room.kind === kind).reduce((total, room) => total + room.area, 0);
+  // "56,3 m²" → number and unit styled separately in the large readout
+  const [livingNumber, livingUnit] = formatArea(sumArea("boa"), locale).split(" ");
 
   return (
-    <section
-      id="example"
-      aria-labelledby="example-title"
-      className="section-y border-t border-line bg-surface"
-    >
-      <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:order-2 lg:col-span-5">
-          <SectionHeading
-            id="example-title"
-            eyebrow={example.eyebrow}
-            title={example.title}
-            description={example.description}
-          />
+    <section id="example" aria-labelledby="example-title" className="section-y bg-surface">
+      <Container>
+        <SectionHeading
+          id="example-title"
+          index="04"
+          eyebrow={example.eyebrow}
+          title={example.title}
+          description={example.description}
+          layout="split"
+        />
 
-          <h3 className="mt-10 text-sm font-semibold">{example.includesTitle}</h3>
-          <ul className="mt-4 space-y-3">
-            {example.includes.map((item) => (
-              <li key={item} className="flex gap-3">
-                <Check className="mt-1 size-4 shrink-0 text-accent" aria-hidden="true" />
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-16 grid gap-12 md:mt-24 lg:grid-cols-12 lg:gap-10">
+          {/* Drawing sheet: graph paper, the plan, and a title block like a real drawing */}
+          <figure className="-mx-5 border-y border-line sm:mx-0 sm:border lg:col-span-8">
+            <div className="bg-graph p-3 sm:p-8 lg:p-12">
+              <FloorPlanDrawing locale={locale} example={example} />
+            </div>
+            <figcaption className="grid border-t border-line text-xs sm:grid-cols-3">
+              <span className="label-mono border-b border-line px-4 py-3 text-ink sm:border-r sm:border-b-0">
+                {site.name}
+              </span>
+              <span className="border-b border-line px-4 py-3 text-muted sm:border-r sm:border-b-0">
+                {example.figureCaption}
+              </span>
+              <span className="label-mono flex items-center gap-5 px-4 py-3 text-ink">
+                <span className="inline-flex items-center gap-2">
+                  <span aria-hidden="true" className="size-3 border border-ink bg-surface" />
+                  BOA
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <svg aria-hidden="true" viewBox="0 0 12 12" className="size-3 stroke-ink">
+                    <path d="M0 8L8 0M4 12L12 4" className="stroke-line-strong" strokeWidth="1.5" />
+                    <rect x="0.5" y="0.5" width="11" height="11" fill="none" />
+                  </svg>
+                  BIA
+                </span>
+              </span>
+            </figcaption>
+          </figure>
 
-          <h3 className="mt-10 text-sm font-semibold">{example.summaryTitle}</h3>
-          <dl className="mt-4 divide-y divide-line border-y border-line">
-            {[
-              { label: example.livingArea, value: sumArea("boa") },
-              { label: example.secondaryArea, value: sumArea("bia") },
-            ].map((row) => (
-              <div key={row.label} className="flex items-baseline justify-between gap-4 py-3">
-                <dt className="text-muted">{row.label}</dt>
-                <dd className="font-display text-lg font-semibold tabular-nums">
-                  {formatArea(row.value, locale)}
+          <div className="flex flex-col lg:col-span-4">
+            <h3 className="label-mono text-accent">{example.summaryTitle}</h3>
+            <dl className="mt-6">
+              <div className="border-b border-ink pb-6">
+                <dt className="text-sm text-muted">{example.livingArea}</dt>
+                <dd className="mt-2 flex items-baseline gap-2 font-display font-light tracking-tighter text-accent">
+                  <span className="text-7xl tabular-nums lg:text-8xl">{livingNumber}</span>
+                  <span className="text-3xl">{livingUnit}</span>
                 </dd>
               </div>
-            ))}
-          </dl>
+              <div className="flex items-baseline justify-between gap-4 border-b border-line py-4">
+                <dt className="text-sm text-muted">{example.secondaryArea}</dt>
+                <dd className="font-mono text-sm tabular-nums">{formatArea(sumArea("bia"), locale)}</dd>
+              </div>
+            </dl>
 
-          <a
-            href={site.sampleDrawingHref}
-            className="group mt-8 inline-flex min-h-11 items-start gap-3 rounded-control font-medium text-accent"
-          >
-            <FileDown className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
-            <span>
-              <span className="underline-offset-4 group-hover:underline">{example.sampleLink}</span>{" "}
-              <span className="text-sm font-normal whitespace-nowrap text-muted">({example.sampleLinkMeta})</span>
-            </span>
-          </a>
+            <h3 className="label-mono mt-10 text-accent">{example.includesTitle}</h3>
+            <ol className="mt-4">
+              {example.includes.map((item, index) => (
+                <li key={item} className="flex gap-4 border-b border-line py-3 text-sm">
+                  <span aria-hidden="true" className="font-mono text-muted tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ol>
+
+            <a
+              href={site.sampleDrawingHref}
+              className="group mt-10 inline-flex min-h-11 items-start gap-3 rounded-control font-medium text-accent lg:mt-auto lg:pt-10"
+            >
+              <FileDown className="mt-0.5 size-5 shrink-0" aria-hidden="true" strokeWidth={1.5} />
+              <span>
+                <span className="underline decoration-accent/30 underline-offset-8 group-hover:decoration-accent">
+                  {example.sampleLink}
+                </span>{" "}
+                <span className="font-mono text-xs font-normal whitespace-nowrap text-muted">
+                  ({example.sampleLinkMeta})
+                </span>
+              </span>
+            </a>
+          </div>
         </div>
-
-        {/* Full-bleed on mobile so the drawing's labels stay legible. */}
-        <figure className="-mx-5 border-y border-line bg-canvas p-3 sm:mx-0 sm:rounded-card sm:border sm:p-8 lg:order-1 lg:col-span-7">
-          <FloorPlanDrawing locale={locale} example={example} />
-          <figcaption className="mt-4 flex flex-col gap-3 px-2 text-xs text-muted sm:px-0 sm:flex-row sm:items-center sm:justify-between">
-            <span>{example.figureCaption}</span>
-            <span className="flex shrink-0 gap-4">
-              <span className="inline-flex items-center gap-2">
-                <span aria-hidden="true" className="size-3 border border-ink bg-surface" />
-                BOA
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <svg aria-hidden="true" viewBox="0 0 12 12" className="size-3 stroke-ink">
-                  <path d="M0 8L8 0M4 12L12 4" className="stroke-line-strong" strokeWidth="1.5" />
-                  <rect x="0.5" y="0.5" width="11" height="11" fill="none" />
-                </svg>
-                BIA
-              </span>
-            </span>
-          </figcaption>
-        </figure>
       </Container>
     </section>
   );
@@ -101,16 +116,11 @@ function FloorPlanDrawing({ locale, example }: FloorPlanDrawingProps) {
   const { outline, unitsPerMetre } = plan;
   const right = outline.x + outline.width;
   const bottom = outline.y + outline.height;
-  // White halo behind labels keeps them legible over walls and hatching.
+  // Halo behind labels keeps them legible over walls and hatching.
   const labelProps = { textAnchor: "middle", paintOrder: "stroke", strokeWidth: 4 } as const;
 
   return (
-    <svg
-      viewBox="0 0 400 300"
-      role="img"
-      aria-label={example.figureLabel}
-      className="h-auto w-full font-sans"
-    >
+    <svg viewBox="0 0 400 300" role="img" aria-label={example.figureLabel} className="h-auto w-full font-sans">
       <defs>
         <pattern id="bia-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
           <line x1="0" y1="0" x2="0" y2="6" className="stroke-line-strong" strokeWidth="1.5" />
@@ -140,22 +150,21 @@ function FloorPlanDrawing({ locale, example }: FloorPlanDrawingProps) {
         {plan.rooms.map((room) => (
           <text key={room.id} x={room.label.x} y={room.label.y} {...labelProps}>
             {/* Larger type on mobile, where the drawing is scaled down. */}
-            <tspan className="fill-ink text-sm font-semibold sm:text-xs">
-              {example.rooms[room.id]}
-            </tspan>
-            <tspan x={room.label.x} dy="1.25em" className="fill-muted text-sm sm:text-xs">
+            <tspan className="fill-ink text-sm font-medium sm:text-xs">{example.rooms[room.id]}</tspan>
+            <tspan x={room.label.x} dy="1.3em" className="fill-accent font-mono text-sm sm:text-xs">
               {formatArea(room.area, locale)}
             </tspan>
           </text>
         ))}
       </g>
 
-      {/* Outer dimensions */}
-      <g className="stroke-muted" strokeWidth="1">
+      {/* Outer dimensions, drawn in the accent colour like annotations on a plan */}
+      <g className="stroke-accent" strokeWidth="1">
         <path d={`M${outline.x} 8H${right}M${outline.x} 4V12M${right} 4V12`} />
         <path d={`M8 ${outline.y}V${bottom}M4 ${outline.y}H12M4 ${bottom}H12`} />
       </g>
-      <g className="fill-muted stroke-surface" fontSize="10" {...labelProps}>
+      {/* Wider halo so the dimension line breaks cleanly around the label */}
+      <g className="fill-accent stroke-surface font-mono text-sm sm:text-xs" {...labelProps} strokeWidth={10}>
         <text x={outline.x + outline.width / 2} y="11.5">
           {formatLength(outline.width / unitsPerMetre, locale)}
         </text>
