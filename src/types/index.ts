@@ -41,3 +41,8 @@ export type Service = {
   description: string;
   features: string[];
 };
+
+export type ProcessStep = {
+  title: string;
+  description: string;
+};

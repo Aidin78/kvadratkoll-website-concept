@@ -84,8 +84,31 @@ const sv: Dictionary = {
       },
     ],
   },
+  process: {
+    eyebrow: "Så fungerar det",
+    title: "Från bokning till färdigt underlag",
+    description: "Ett enkelt förlopp i fyra steg. Du vet hela tiden vad som händer härnäst.",
+    steps: [
+      {
+        title: "Skicka en förfrågan",
+        description:
+          "Ange adress och typ av bostad eller lokal. Vi återkommer och bekräftar en tid som passar.",
+      },
+      {
+        title: "Mätning på plats",
+        description: "Vi besöker objektet och mäter upp alla utrymmen.",
+      },
+      {
+        title: "Beräkning och ritning",
+        description: "Måtten sammanställs och arean beräknas. Vid behov tas en planritning fram.",
+      },
+      {
+        title: "Du får underlaget",
+        description: "Mätresultatet, och planritningen om du beställt en, levereras digitalt.",
+      },
+    ],
+  },
   plannedSections: [
-    { section: "process", title: "Så fungerar det" },
     { section: "why", title: "Varför Kvadratkoll" },
     { section: "example", title: "Exempel på planritning" },
     { section: "pricing", title: "Priser" },

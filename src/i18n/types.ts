@@ -1,4 +1,11 @@
-import type { FooterLinkGroup, SectionId, SectionLink, Service, TrustIndicator } from "@/types";
+import type {
+  FooterLinkGroup,
+  ProcessStep,
+  SectionId,
+  SectionLink,
+  Service,
+  TrustIndicator,
+} from "@/types";
 
 /** Shape every locale dictionary must implement. */
 export type Dictionary = {
@@ -38,6 +45,12 @@ export type Dictionary = {
     title: string;
     description: string;
     items: Service[];
+  };
+  process: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: ProcessStep[];
   };
   /** Titles for homepage sections that are not built yet. */
   plannedSections: { section: SectionId; title: string }[];

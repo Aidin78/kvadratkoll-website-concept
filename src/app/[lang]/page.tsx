@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
+import { Process } from "@/components/sections/Process";
 import { Services } from "@/components/sections/Services";
 import { TrustIndicators } from "@/components/sections/TrustIndicators";
 import { Container } from "@/components/ui/Container";
@@ -13,6 +14,7 @@ export default async function HomePage() {
       <Hero />
       <TrustIndicators />
       <Services />
+      <Process />
       {/* Sections not built yet. Each is replaced by its own component in components/sections/. */}
       {dict.plannedSections.map(({ section, title }) => (
         <section

@@ -84,8 +84,32 @@ const en: Dictionary = {
       },
     ],
   },
+  process: {
+    eyebrow: "How it works",
+    title: "From booking to finished documentation",
+    description: "A simple four-step process. You always know what happens next.",
+    steps: [
+      {
+        title: "Send a request",
+        description:
+          "Tell us the address and type of property. We get back to you to confirm a suitable time.",
+      },
+      {
+        title: "On-site measurement",
+        description: "We visit the property and measure every space.",
+      },
+      {
+        title: "Calculation and drawing",
+        description:
+          "The measurements are compiled and the area is calculated. A floor plan is drawn if needed.",
+      },
+      {
+        title: "Receive your documentation",
+        description: "The measurement results, and the floor plan if ordered, are delivered digitally.",
+      },
+    ],
+  },
   plannedSections: [
-    { section: "process", title: "How it works" },
     { section: "why", title: "Why Kvadratkoll" },
     { section: "example", title: "Floor plan example" },
     { section: "pricing", title: "Pricing" },
