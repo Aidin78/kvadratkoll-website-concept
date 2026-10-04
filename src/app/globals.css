@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Tailwind exposes each one as a utility,
+ * e.g. --color-ink → text-ink / bg-ink, --radius-card → rounded-card.
+ */
+@theme {
+  /* Warm Scandinavian neutrals */
+  --color-canvas: #f7f5f0;
+  --color-surface: #ffffff;
+  --color-sand: #efebe3;
+  --color-line: #e3ded4;
+  --color-line-strong: #cfc8bb;
+
+  /* Typography colors (both pass WCAG AA on canvas and surface) */
+  --color-ink: #16181b;
+  --color-muted: #575c63;
+
+  /* Single brand accent: deep spruce green */
+  --color-accent: #1e4b42;
+  --color-accent-hover: #163a33;
+  --color-accent-soft: #e3ece8;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Restrained radius scale: controls (buttons, inputs) and cards */
+  --radius-control: 0.5rem;
+  --radius-card: 0.875rem;
+
+  --leading-display: 1.05;
+
+  --shadow-soft: 0 1px 2px rgb(22 24 27 / 0.04), 0 8px 24px -12px rgb(22 24 27 / 0.12);
+
+  --container-site: 75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-balance tracking-tight;
+  }
+
+  p {
+    @apply text-pretty;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+}
+
+/* Consistent vertical rhythm for page sections */
+@utility section-y {
+  @apply py-20 md:py-28;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
