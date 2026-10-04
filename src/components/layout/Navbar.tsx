@@ -20,7 +20,7 @@ export async function Navbar() {
     // become the containing block for the fixed mobile menu panel.
     <header className="sticky top-0 z-40 border-b border-line before:absolute before:inset-0 before:-z-10 before:bg-canvas/85 before:backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-6 lg:h-18">
-        <Logo href={homeHref(locale)} label={dict.common.homeLinkLabel} />
+        <Logo href={homeHref(locale)} label={dict.common.homeLinkLabel} eager />
 
         <nav aria-label={dict.nav.mainLabel} className="hidden lg:block">
           <ul className="flex items-center gap-1">

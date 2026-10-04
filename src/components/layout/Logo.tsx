@@ -7,10 +7,12 @@ type LogoProps = {
   href: string;
   /** Accessible name for the link, e.g. "Kvadratkoll, till startsidan". */
   label: string;
+  /** Load immediately instead of lazily; use for the header logo, which is always above the fold. */
+  eager?: boolean;
   className?: string;
 };
 
-export function Logo({ href, label, className }: LogoProps) {
+export function Logo({ href, label, eager = false, className }: LogoProps) {
   return (
     <Link
       href={href}
@@ -18,7 +20,13 @@ export function Logo({ href, label, className }: LogoProps) {
       className={cn("inline-flex min-h-11 items-center rounded-control", className)}
     >
       {/* Smaller on phones so the logo, language switch and menu button fit at 320px. */}
-      <Image src={images.logo} alt="" className="h-5 w-auto sm:h-6" sizes="220px" />
+      <Image
+        src={images.logo}
+        alt=""
+        loading={eager ? "eager" : "lazy"}
+        className="h-5 w-auto sm:h-6"
+        sizes="220px"
+      />
     </Link>
   );
 }
