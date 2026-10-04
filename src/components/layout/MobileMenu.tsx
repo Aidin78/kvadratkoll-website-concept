@@ -68,7 +68,7 @@ export function MobileMenu({ items, cta, labels }: MobileMenuProps) {
                 <Link
                   href={item.href}
                   onClick={close}
-                  className="flex min-h-16 items-baseline gap-4 font-display text-3xl font-medium tracking-tighter"
+                  className="flex min-h-16 items-center gap-4 py-3 font-display text-3xl font-medium tracking-tighter"
                 >
                   <span aria-hidden="true" className="label-mono text-accent">
                     {String(index + 1).padStart(2, "0")}
