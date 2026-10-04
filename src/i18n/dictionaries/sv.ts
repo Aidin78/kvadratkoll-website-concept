@@ -40,7 +40,7 @@ const sv: Dictionary = {
     items: [
       { value: "7 000+", label: "utförda areamätningar", confirmed: true },
       { value: "SIS", label: "diplomerade areamätare", confirmed: true },
-      { value: "SS 21054:2020", label: "aktuell svensk standard för areamätning", confirmed: true },
+      { value: "SS 21054", label: "aktuell svensk standard för areamätning (2020)", confirmed: true },
       { value: "Samma dag", label: "mätbevis som PDF i de flesta fall", confirmed: true },
     ],
     placeholderNote: "Uppgifterna är platshållare och ersätts med bekräftade siffror.",

@@ -40,7 +40,7 @@ const en: Dictionary = {
     items: [
       { value: "7,000+", label: "area measurements completed", confirmed: true },
       { value: "SIS", label: "certified area measurers", confirmed: true },
-      { value: "SS 21054:2020", label: "current Swedish standard for area measurement", confirmed: true },
+      { value: "SS 21054", label: "current Swedish standard for area measurement (2020)", confirmed: true },
       { value: "Same day", label: "certificate as PDF in most cases", confirmed: true },
     ],
     placeholderNote: "These figures are placeholders and will be replaced with confirmed data.",
