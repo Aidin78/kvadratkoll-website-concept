@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Unofficial frontend redesign concept for Kvadratkoll.se (Swedish property measurement). UI only: no backend. The site is bilingual: Swedish (primary) and English. The site is set to `noindex` because it is a concept.
 
-Do not invent business claims (prices, certifications, customer counts, reviews, statistics, addresses, guarantees). Use clearly marked placeholder copy instead.
+Business facts, prices and contact details come from the real site kvadratkoll.se (fetched October 2026): see `src/data/site.ts`, `src/data/pricing.ts` and the dictionaries. Do not invent claims beyond that source (prices, certifications, counts, reviews, guarantees). Use clearly marked placeholder copy for anything unconfirmed. The hero image is still a placeholder.
 
 ## Commands
 
@@ -27,7 +27,10 @@ There is no test suite. After changes, run lint, typecheck, and build.
 - `src/app/globals.css`: the design system. Tailwind v4 `@theme` tokens (colors `canvas/surface/sand/line/ink/muted/accent`, `rounded-control` / `rounded-card`, `max-w-site`, `leading-display`, `shadow-soft`), base styles (focus ring, heading font), the `section-y` utility for section padding, and reduced-motion handling. Add new tokens here instead of using arbitrary Tailwind values.
 - `src/components/ui/`: primitives that receive props only. `Button.tsx` exports `buttonStyles()` plus `Button` and `ButtonLink` (a Next `Link`) that share variants. Use `ButtonLink` for navigation CTAs.
 - `src/components/layout/`: `Navbar`, `Footer` (async server), `MobileMenu` and `LanguageSwitcher` (client), `Logo` (placeholder wordmark).
-- `src/components/sections/`: homepage sections (async Server Components that read their own dictionary slice). `[lang]/page.tsx` renders `Hero`, `TrustIndicators`, `Services`, `Process`, `WhyUs`, `FloorPlanExample`, and then placeholders from `dict.plannedSections`. Replace each placeholder with its own section component, using its `SectionId` as the section `id`.
+- `src/components/sections/`: homepage sections, in order: `Hero`, `TrustIndicators`, `Services`, `Process`, `WhyUs`, `FloorPlanExample`, `Pricing`, `Faq`, `Booking`. They are async Server Components that read their own dictionary slice, and each uses its `SectionId` as the section `id`. `BookingForm` is a client component.
+- **Data vs. copy:** locale-independent data lives in `src/data/` (`pricing.ts` price brackets and surcharge amounts, `floor-plan-example.ts` geometry). Labels are keyed by id in the dictionaries. Format numbers, areas and prices per locale with `src/lib/format.ts`.
+- **Booking form:** `src/lib/booking.ts` has the `BookingRequest` type and a placeholder `submitBookingRequest()`, since there is no backend. Replace its body with the real API call when one exists. The form shows a visible "concept version" notice.
+- `src/components/ui/FormField.tsx`: label/hint wrapper plus shared `fieldStyles` for inputs.
 - `TrustIndicator.confirmed: false` renders a `*` placeholder marker plus a footnote. Keep unconfirmed figures marked this way.
 - `src/lib/cn.ts`: minimal class-join helper (no clsx/tailwind-merge). It does not resolve conflicting classes, so don't pass a `className` that overrides a utility already in `buttonStyles` (e.g. `hidden` vs `inline-flex`). Wrap the element instead.
 
