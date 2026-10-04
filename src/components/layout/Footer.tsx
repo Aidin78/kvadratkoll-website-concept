@@ -4,29 +4,30 @@ import { homeHref, sectionHref, site } from "@/data/site";
 import { getDictionary, getLocale } from "@/i18n/get-dictionary";
 import { Logo } from "./Logo";
 
+const footerLinkStyles =
+  "inline-flex min-h-10 items-center text-sm text-muted transition-colors hover:text-ink";
+
 export async function Footer() {
   const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
+  const { footer } = dict;
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-line bg-surface">
       <Container className="py-14 md:py-20">
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-12">
-          <div className="col-span-2 md:col-span-5">
+          <div className="col-span-2 md:col-span-12 lg:col-span-4">
             <Logo href={homeHref(locale)} label={dict.common.homeLinkLabel} />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">{dict.footer.tagline}</p>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">{footer.tagline}</p>
           </div>
 
-          {dict.footer.groups.map((group) => (
-            <nav key={group.title} aria-label={group.title} className="md:col-span-3 lg:col-span-2">
+          {footer.groups.map((group) => (
+            <nav key={group.title} aria-label={group.title} className="md:col-span-4 lg:col-span-2">
               <h2 className="text-sm font-semibold">{group.title}</h2>
               <ul className="mt-3">
                 {group.links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={sectionHref(locale, link.section)}
-                      className="inline-flex min-h-10 items-center text-sm text-muted transition-colors hover:text-ink"
-                    >
+                    <Link href={sectionHref(locale, link.section)} className={footerLinkStyles}>
                       {link.label}
                     </Link>
                   </li>
@@ -34,6 +35,22 @@ export async function Footer() {
               </ul>
             </nav>
           ))}
+
+          <div className="col-span-2 md:col-span-4">
+            <h2 className="text-sm font-semibold">{footer.contactTitle}</h2>
+            <address className="mt-3 flex flex-col not-italic">
+              <a href={`mailto:${site.email}`} className={footerLinkStyles}>
+                {site.email}
+              </a>
+              <a href={site.phoneHref} className={footerLinkStyles}>
+                {site.phone}
+              </a>
+              <span className="mt-2 text-sm text-muted">{site.company}</span>
+              <span className="text-sm text-muted">
+                {footer.orgNumberLabel} {site.orgNumber}
+              </span>
+            </address>
+          </div>
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
