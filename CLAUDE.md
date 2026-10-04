@@ -6,9 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Unofficial frontend redesign concept for Kvadratkoll.se (Swedish property measurement). UI only: no backend. The site is bilingual: Swedish (primary) and English. The site is set to `noindex` because it is a concept.
+Frontend redesign proposal for the client Kvadratkoll.se (Swedish property measurement). UI only: no backend. The site is bilingual: Swedish (primary) and English. The site is set to `noindex` because it is a concept.
 
-Business facts, prices and contact details come from the real site kvadratkoll.se (fetched October 2026): see `src/data/site.ts`, `src/data/pricing.ts` and the dictionaries. Do not invent claims beyond that source (prices, certifications, counts, reviews, guarantees). Use clearly marked placeholder copy for anything unconfirmed. The hero image is still a placeholder.
+Business facts, prices and contact details come from the real site kvadratkoll.se (fetched October 2026): see `src/data/site.ts`, `src/data/pricing.ts` and the dictionaries. Do not invent claims beyond that source (prices, certifications, counts, reviews, guarantees). Use clearly marked placeholder copy for anything unconfirmed. The logo, SIS badge and photos are the client's own assets from kvadratkoll.se, in `src/assets/images/` and referenced through `src/data/images.ts` (static imports for `next/image`). The favicon is `src/app/icon.png`.
 
 ## Commands
 
@@ -26,7 +26,7 @@ There is no test suite. After changes, run lint, typecheck, and build.
 - **Links:** build internal hrefs with `homeHref(locale)` / `sectionHref(locale, sectionId)` from `src/data/site.ts`. Homepage section anchors are the `SectionId` union in `src/types`, and are the same in both locales.
 - `src/app/globals.css`: the design system. Tailwind v4 `@theme` tokens (colors `canvas/surface/sand/line/ink/muted/accent`, `rounded-control` / `rounded-card`, `max-w-site`, `leading-display`, `shadow-soft`), base styles (focus ring, heading font), the `section-y` utility for section padding, and reduced-motion handling. Add new tokens here instead of using arbitrary Tailwind values.
 - `src/components/ui/`: primitives that receive props only. `Button.tsx` exports `buttonStyles()` plus `Button` and `ButtonLink` (a Next `Link`) that share variants. Use `ButtonLink` for navigation CTAs.
-- `src/components/layout/`: `Navbar`, `Footer` (async server), `MobileMenu` and `LanguageSwitcher` (client), `Logo` (placeholder wordmark).
+- `src/components/layout/`: `Navbar`, `Footer` (async server), `MobileMenu` and `LanguageSwitcher` (client), `Logo` (client logo image).
 - `src/components/sections/`: homepage sections, in order: `Hero`, `TrustIndicators`, `Services`, `Process`, `WhyUs`, `FloorPlanExample`, `Pricing`, `Faq`, `Booking`. They are async Server Components that read their own dictionary slice, and each uses its `SectionId` as the section `id`. `BookingForm` is a client component.
 - **Data vs. copy:** locale-independent data lives in `src/data/` (`pricing.ts` price brackets and surcharge amounts, `floor-plan-example.ts` geometry). Labels are keyed by id in the dictionaries. Format numbers, areas and prices per locale with `src/lib/format.ts`.
 - **Booking form:** `src/lib/booking.ts` has the `BookingRequest` type and a placeholder `submitBookingRequest()`, since there is no backend. Replace its body with the real API call when one exists. The form shows a visible "concept version" notice.
