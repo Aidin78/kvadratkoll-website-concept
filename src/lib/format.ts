@@ -21,3 +21,12 @@ export function formatArea(value: number, locale: Locale) {
 export function formatLength(value: number, locale: Locale) {
   return `${formatDecimal(value, locale)} m`;
 }
+
+/** 1 900 kr (sv) / SEK 1,900 (en) */
+export function formatPrice(value: number, locale: Locale) {
+  return new Intl.NumberFormat(numberLocales[locale], {
+    style: "currency",
+    currency: "SEK",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
