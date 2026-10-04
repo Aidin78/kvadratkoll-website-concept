@@ -1,88 +1,110 @@
-# Kvadratkoll: förslag till ny webbplats
+# Kvadratkoll: website redesign
 
-Ett designförslag för **Kvadratkoll i Stockholm AB**. Förslaget bygger på innehållet, priserna, logotypen och bilderna från nuvarande kvadratkoll.se, men med en ny struktur och ett nytt formspråk.
+A frontend redesign proposal for [Kvadratkoll](https://www.kvadratkoll.se), a Stockholm company that does certified area measurement of homes and commercial premises. It's built with Next.js, TypeScript and Tailwind CSS.
 
-**Demo:** [lägg till länk efter publicering] · svenska på `/sv`, engelska på `/en`
+> **Status:** design proposal, not the live website. Pages are `noindex` until the client approves the redesign.
 
-> Detta är ett förslag och inte den publicerade webbplatsen. Sidan är dold för sökmotorer (`noindex`) tills förslaget är godkänt.
+**Live demo:** _add link after deploying_ · Swedish at `/sv`, English at `/en`
 
 ---
 
-## Utgångspunkt
+## Goals
 
-Kvadratkoll har det som en kund letar efter: över 7 000 utförda mätningar, diplomerade areamätare från SIS, mätning enligt SS 21054:2020 och mätbevis ofta samma dag. På nuvarande webbplats är den informationen fördelad på nio separata sidor, och de starkaste förtroendesignalerna står i löptext. Bokning sker via mejl eller telefon.
+The current site spreads its content over nine separate pages, and its strongest trust signals are buried in body text: more than 7,000 measurements, SIS certification and the SS 21054:2020 standard. The redesign:
 
-Förslaget samlar allt på en sida, i den ordning en kund behöver det, och lyfter fram det som skiljer Kvadratkoll från andra.
+- **One page, ordered for the customer:** services → process → why us → certificate → pricing → FAQ → booking.
+- **Trust up front:** the SIS badge sits in the hero, with a trust band of figures right below it.
+- **Readable pricing:** the full price list becomes clear tables, laid out like a quote sheet.
+- **Bilingual:** Swedish (primary) and English.
+- **Mobile-first:** layouts are designed for small screens, not just stacked.
 
-## Vad förslaget innehåller
+## Design direction: the architectural drawing
 
-Startsidan följer kundens väg från första intryck till bokning:
+The visual language comes from what the company actually delivers, which is measurements and floor plans.
 
-| Del | Innehåll |
+- **Palette:** cool stone paper, graphite ink and a single deep Scandinavian blue accent, like annotations on a construction drawing.
+- **Typography:** large, tight display headings (Inter Tight), Inter for body text, and IBM Plex Mono for technical annotations: section numbers, dimensions, m².
+- **Brand details:** dimension lines over the hero photo, graph paper behind the floor plan, a measuring-ruler motif, and small squares that echo the logo.
+- **Restraint:** no shadows, gradients or large radii. Images have square corners.
+- **Section rhythm:** stone → white → graphite → stone → white → stone → white → blue → graphite.
+
+The memorable "brand moment" is the certificate section. It presents an illustrative floor plan as a drawing sheet, with a title block, room areas and a large total-area readout.
+
+## Tech stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Server Components by default, statically generated)
+- TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com) with design tokens in `@theme`
+- [lucide-react](https://lucide.dev) icons
+- `next/font` (self-hosted Google Fonts) and `next/image`
+
+There's no backend. The booking form is UI only and uses a typed placeholder, `submitBookingRequest()`, ready to connect to a real API.
+
+## Features
+
+- **i18n routing** with `app/[lang]`. `/` redirects to `/sv`, and the language switcher keeps the current path.
+- **Typed dictionaries:** Swedish and English share one `Dictionary` type, so a missing translation fails the type check.
+- **Locale-aware formatting** for areas, lengths and prices (`56,3 m²` / `56.3 m²`, `1 900 kr` / `SEK 1,900`).
+- **Localized 404 pages,** plus a global 404 for URLs without a valid locale.
+- **Accessible components:** semantic landmarks, skip link, native `<details>` FAQ, labelled form fields with focus management, visible focus rings and reduced-motion support.
+- **Minimal client JavaScript:** only the mobile menu, language switcher and booking form are client components.
+
+## Quality
+
+Measured locally on a production build:
+
+| Check | Result |
 | --- | --- |
-| **Start** | Budskap, bokningsknapp och SIS-diplomet direkt synligt |
-| **I korthet** | 7 000+ mätningar · SIS-diplomerade · SS 21054 · mätbevis samma dag |
-| **01 Tjänster** | Bostäder, lokaler och planritningar, med egna bilder |
-| **02 Så går det till** | Fyra steg från bokning till mätbevis |
-| **03 Varför Kvadratkoll** | Diplomering, laser och CAD, juridiskt mätbevis, flexibla tider |
-| **04 Mätbevis** | Vad mätbeviset visar, med en ritning som exempel och länk till en riktig exempelritning |
-| **05 Priser** | Hela prislistan som tydliga tabeller med tillägg |
-| **06 Vanliga frågor** | Svar hämtade från sidorna om mätning, regelverk och mätbevis |
-| **07 Boka** | Telefon och mejl i fokus, vad ni behöver från kunden och ett bokningsformulär |
+| axe-core (WCAG 2.1 AA + best practices) | 0 violations, both locales, desktop and mobile |
+| Lighthouse desktop | Performance 100 · Accessibility 100 · Best Practices 100 |
+| Cumulative Layout Shift | 0 |
 
-**Övrigt**
-- **Två språk:** svenska och engelska, med språkval i menyn.
-- **Mobilanpassat:** varje del är utformad för mobilen, inte bara staplad.
-- **Bokningsknapp alltid nära:** den finns i menyn och vid de viktigaste avsnitten.
+SEO scores lower on purpose, because pages are `noindex` while the site is a proposal.
 
-## Designidé: arkitektritningen
+## Getting started
 
-Formspråket hämtar inspiration från det Kvadratkoll faktiskt levererar, nämligen mätningar och ritningar.
-
-- **Färger:** ljust stenpapper, grafit och en djupblå accent, som anteckningar på en ritning.
-- **Typografi:** stora, stramma rubriker och ett tekniskt typsnitt för mått, numrering och etiketter.
-- **Detaljer:** måttlinjer över bilden i toppen, rutpapper bakom ritningen, en linjal som linje och små fyrkanter som knyter an till logotypen.
-- **Återhållsamt:** inga skuggor, gradienter eller rundade "appkort". Bilder har raka hörn.
-
-## Kvalitet
-
-Mätt i testmiljö:
-
-- **Tillgänglighet:** 0 fel enligt WCAG 2.1 AA (axe-core) på svenska och engelska, mobil och dator.
-- **Lighthouse dator:** Performance 100 · Accessibility 100 · Best Practices 100.
-- **Ingen layoutförskjutning** när sidan laddas (CLS 0).
-- **Snabb:** sidorna är statiskt genererade, och bilderna optimeras och anpassas automatiskt efter skärmstorlek.
-
-## Innehåll och bilder
-
-- **Fakta och priser:** hämtade från kvadratkoll.se (oktober 2026). Inga uppgifter är påhittade.
-- **Material:** logotyp, SIS-diplom, foton och exempelritning är Kvadratkolls eget material.
-- **Illustration:** ritningen i avsnittet Mätbevis är en illustration med påhittade mått och är tydligt märkt som exempel.
-
-## Förslag på nästa steg
-
-1. **Bokningsformuläret:** koppla det till e-post så att förfrågningar kommer direkt till info@kvadratkoll.se. I förslaget skickar formuläret ännu inga uppgifter.
-2. **Bilder i högre upplösning:** dagens bilder är cirka 800 pixlar breda. Originalbilder ger skarpare resultat på moderna skärmar.
-3. **Granskning av texter:** särskilt den engelska översättningen.
-4. **Publicering:** på kvadratkoll.se, med indexering för sökmotorer påslagen.
-
----
-
-## För utvecklare
-
-Next.js (App Router), TypeScript, Tailwind CSS v4 och lucide-react. Arkitektur, designsystem och konventioner beskrivs i [`CLAUDE.md`](CLAUDE.md).
+Requires Node.js 20.9 or later.
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000 (redirects to /sv, English at /en)
+npm run dev        # http://localhost:3000 → redirects to /sv
 ```
 
-| Command             | Description                        |
-| ------------------- | ---------------------------------- |
-| `npm run dev`       | Start the dev server               |
-| `npm run build`     | Production build                   |
-| `npm run start`     | Serve the production build         |
-| `npm run lint`      | ESLint                             |
-| `npm run typecheck` | Generate route types and run `tsc` |
+| Command             | Description                                |
+| ------------------- | ------------------------------------------ |
+| `npm run dev`       | Start the dev server                       |
+| `npm run build`     | Production build                           |
+| `npm run start`     | Serve the production build                 |
+| `npm run lint`      | ESLint                                     |
+| `npm run typecheck` | Generate route types and run `tsc`         |
 
-Deploy: import the repository on Vercel. No environment variables are needed.
+## Project structure
+
+```
+src/
+  app/
+    [lang]/            # root layout, homepage, localized 404 and catch-all
+    global-not-found.tsx
+    globals.css        # design tokens and utilities (Tailwind v4 @theme)
+  components/
+    layout/            # Navbar, MobileMenu, LanguageSwitcher, Footer, Logo
+    sections/          # Hero, TrustIndicators, Services, Process, WhyUs,
+                       # FloorPlanExample, Pricing, Faq, Booking, BookingForm
+    ui/                # Button, Container, SectionHeading, FormField
+  data/                # locale-independent data: site info, pricing, images, floor plan geometry
+  i18n/                # locale config, typed sv/en dictionaries, getDictionary()
+  lib/                 # formatting, booking placeholder, class helper
+  assets/images/       # client logo, SIS badge and photos
+```
+
+[`CLAUDE.md`](CLAUDE.md) documents the architecture, design system and conventions in more detail.
+
+## Deployment
+
+Import the repository on [Vercel](https://vercel.com). The framework is detected automatically, and no environment variables are needed. Every push to `main` deploys.
+
+## Content and credits
+
+- **Facts and contact details:** business facts, prices and contact details come from [kvadratkoll.se](https://www.kvadratkoll.se) (October 2026). No claims are invented.
+- **Client assets:** the logo, SIS badge, photos and example drawing belong to Kvadratkoll i Stockholm AB and are used for this proposal.
+- **Illustration:** the floor plan in the certificate section is an illustration with made-up measurements, and is labelled as such.
