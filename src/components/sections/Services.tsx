@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,49 +9,56 @@ export async function Services() {
   const { services } = await getDictionary();
 
   return (
-    <section id="services" aria-labelledby="services-title" className="section-y">
+    <section id="services" aria-labelledby="services-title" className="section-y bg-surface">
       <Container>
         <SectionHeading
           id="services-title"
+          index="01"
           eyebrow={services.eyebrow}
           title={services.title}
           description={services.description}
+          layout="split"
         />
-        <ul className="mt-12 grid gap-4 md:mt-16 lg:grid-cols-3 lg:gap-6">
-          {services.items.map((service) => (
-            <li key={service.id}>
-              <ServiceCard service={service} />
-            </li>
+        <ol className="mt-16 border-b border-line md:mt-24">
+          {services.items.map((service, index) => (
+            <ServiceRow key={service.id} service={service} number={index + 1} />
           ))}
-        </ul>
+        </ol>
       </Container>
     </section>
   );
 }
 
-function ServiceCard({ service }: { service: Service }) {
+function ServiceRow({ service, number }: { service: Service; number: number }) {
   return (
-    // Image beside the text on tablet, where three narrow columns would cramp the copy.
-    <article className="flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface transition-colors duration-200 hover:border-line-strong sm:flex-row lg:flex-col">
-      <Image
-        src={serviceImages[service.id]}
-        alt={service.imageAlt}
-        placeholder="blur"
-        sizes="(min-width: 64rem) 380px, (min-width: 40rem) 40vw, 100vw"
-        className="aspect-3/2 w-full object-cover sm:aspect-auto sm:w-2/5 lg:aspect-3/2 lg:w-full"
-      />
-      <div className="flex flex-1 flex-col p-6 md:p-8">
-        <h3 className="text-xl font-semibold">{service.title}</h3>
-        <p className="mt-3 leading-relaxed text-muted">{service.description}</p>
-        <ul className="mt-6 space-y-2.5 border-t border-line pt-6 text-sm">
+    <li className="grid gap-6 border-t border-ink py-10 md:grid-cols-12 md:gap-x-10 md:py-14">
+      <div className="md:col-span-5 lg:col-span-4">
+        <p aria-hidden="true" className="label-mono text-accent">
+          {String(number).padStart(2, "0")}
+        </p>
+        <h3 className="mt-4 text-3xl font-medium tracking-tighter lg:text-4xl">{service.title}</h3>
+      </div>
+
+      <div className="md:col-span-7 lg:col-span-4">
+        <p className="leading-relaxed text-muted lg:text-lg">{service.description}</p>
+        <ul className="mt-6 space-y-3 text-sm">
           {service.features.map((feature) => (
-            <li key={feature} className="flex gap-3">
-              <Check className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden="true" />
+            <li key={feature} className="flex items-start gap-3">
+              {/* Small filled square, echoing the squares in the Kvadratkoll logo */}
+              <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 bg-accent" />
               {feature}
             </li>
           ))}
         </ul>
       </div>
-    </article>
+
+      <Image
+        src={serviceImages[service.id]}
+        alt={service.imageAlt}
+        placeholder="blur"
+        sizes="(min-width: 64rem) 380px, (min-width: 48rem) 55vw, 100vw"
+        className="aspect-3/2 w-full object-cover md:col-span-7 md:col-start-6 lg:col-span-4 lg:col-start-auto lg:aspect-4/3"
+      />
+    </li>
   );
 }

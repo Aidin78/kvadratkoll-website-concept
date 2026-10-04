@@ -17,37 +17,37 @@ export async function WhyUs() {
   const { why } = await getDictionary();
 
   return (
-    <section id="why" aria-labelledby="why-title" className="section-y border-t border-line">
-      <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-        {/* Heading stays in view while the benefit list scrolls past on desktop. */}
-        <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
-          <SectionHeading
-            id="why-title"
-            eyebrow={why.eyebrow}
-            title={why.title}
-            description={why.description}
-          />
+    <section id="why" aria-labelledby="why-title" className="section-y">
+      <Container className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+        {/* The instrument itself: the laser measurer used on every job */}
+        <figure className="relative -mx-5 sm:mx-0 lg:col-span-5 lg:row-span-2">
           <Image
             src={images.laserMeasurer}
             alt={why.imageAlt}
             placeholder="blur"
-            sizes="400px"
-            className="mt-10 hidden aspect-4/5 w-full max-w-sm rounded-card object-cover lg:block"
+            sizes="(min-width: 64rem) 460px, 100vw"
+            className="aspect-4/3 w-full object-cover sm:aspect-video lg:aspect-auto lg:h-full lg:max-h-176"
           />
+          <figcaption
+            aria-hidden="true"
+            className="label-mono absolute bottom-0 left-0 bg-canvas px-4 py-3 text-ink"
+          >
+            Leica DISTO D8
+          </figcaption>
+        </figure>
+
+        <div className="lg:col-span-6 lg:col-start-7">
+          <SectionHeading id="why-title" index="03" eyebrow={why.eyebrow} title={why.title} description={why.description} />
         </div>
 
-        <ul className="grid content-start gap-x-10 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-1">
+        <ul className="grid gap-x-10 sm:grid-cols-2 lg:col-span-6 lg:col-start-7 lg:self-end">
           {why.items.map((item) => {
             const Icon = benefitIcons[item.icon];
             return (
-              <li key={item.title} className="flex gap-5 border-t border-line py-8 lg:gap-6">
-                <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-control bg-accent-soft text-accent">
-                  <Icon className="size-5" aria-hidden="true" strokeWidth={1.75} />
-                </span>
-                <div>
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-2 leading-relaxed text-muted">{item.description}</p>
-                </div>
+              <li key={item.title} className="border-t border-ink py-8">
+                <Icon className="size-6 text-accent" aria-hidden="true" strokeWidth={1.25} />
+                <h3 className="mt-5 text-lg font-medium tracking-tight">{item.title}</h3>
+                <p className="mt-2 leading-relaxed text-muted">{item.description}</p>
               </li>
             );
           })}
