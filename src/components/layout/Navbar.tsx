@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { ButtonArrow, ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { ButtonLink } from "@/components/ui/Button";
 import { homeHref, sectionHref } from "@/data/site";
 import { getDictionary, getLocale } from "@/i18n/get-dictionary";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -16,19 +16,17 @@ export async function Navbar() {
   const cta = { label: dict.nav.cta.label, href: sectionHref(locale, dict.nav.cta.section) };
 
   return (
-    // The blur sits on a pseudo-element: backdrop-filter on the header itself would
-    // become the containing block for the fixed mobile menu panel.
-    <header className="sticky top-0 z-40 border-b border-line before:absolute before:inset-0 before:-z-10 before:bg-canvas/85 before:backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-line bg-canvas">
       <Container className="flex h-16 items-center justify-between gap-6 lg:h-18">
         <Logo href={homeHref(locale)} label={dict.common.homeLinkLabel} eager />
 
         <nav aria-label={dict.nav.mainLabel} className="hidden lg:block">
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center gap-8">
             {items.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex min-h-11 items-center rounded-control px-3.5 text-sm text-muted transition-colors hover:text-ink"
+                  className="inline-flex min-h-11 items-center text-sm text-muted underline-offset-8 transition-colors hover:text-ink hover:underline"
                 >
                   {item.label}
                 </Link>
@@ -37,10 +35,13 @@ export async function Navbar() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-1 sm:gap-3">
           <LanguageSwitcher current={locale} />
           <div className="hidden sm:block">
-            <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
+            <ButtonLink href={cta.href}>
+              {cta.label}
+              <ButtonArrow />
+            </ButtonLink>
           </div>
           <MobileMenu
             items={items}

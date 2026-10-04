@@ -17,7 +17,7 @@ export function LanguageSwitcher({ current }: { current: Locale }) {
       hrefLang={target}
       lang={target}
       aria-label={localeNames[target]}
-      className="inline-flex size-11 items-center justify-center rounded-control text-sm font-medium text-muted uppercase transition-colors hover:bg-sand hover:text-ink"
+      className="label-mono inline-flex size-11 items-center justify-center rounded-control text-muted transition-colors hover:text-ink"
     >
       {target}
     </Link>

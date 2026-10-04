@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useEffect, useId, useState } from "react";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonArrow, ButtonLink } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 import type { NavItem } from "@/types";
 
@@ -58,26 +58,30 @@ export function MobileMenu({ items, cta, labels }: MobileMenuProps) {
         hidden={!open}
         className={cn(
           "fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto bg-canvas",
-          "border-t border-line px-5 pt-4 pb-8 sm:px-8",
+          "flex flex-col px-5 pt-6 pb-8 sm:px-8",
         )}
       >
         <nav aria-label={labels.nav}>
-          <ul className="divide-y divide-line">
-            {items.map((item) => (
-              <li key={item.href}>
+          <ul className="border-t border-line">
+            {items.map((item, index) => (
+              <li key={item.href} className="border-b border-line">
                 <Link
                   href={item.href}
                   onClick={close}
-                  className="flex min-h-14 items-center font-display text-xl font-medium tracking-tight"
+                  className="flex min-h-16 items-baseline gap-4 font-display text-3xl font-medium tracking-tighter"
                 >
+                  <span aria-hidden="true" className="label-mono text-accent">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
-        <ButtonLink href={cta.href} onClick={close} size="lg" className="mt-8 w-full">
+        <ButtonLink href={cta.href} onClick={close} size="lg" className="mt-auto w-full">
           {cta.label}
+          <ButtonArrow />
         </ButtonLink>
       </div>
     </div>
