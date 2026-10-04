@@ -140,8 +140,32 @@ const en: Dictionary = {
       },
     ],
   },
+  example: {
+    eyebrow: "Example",
+    title: "What measurement documentation can look like",
+    description:
+      "The floor plan shows the area of each room, with living area and secondary area reported separately.",
+    includesTitle: "The documentation can include",
+    includes: [
+      "Area per room",
+      "Living area (BOA) and secondary area (BIA) reported separately",
+      "Scaled floor plan with outer dimensions",
+    ],
+    summaryTitle: "Summary",
+    livingArea: "Living area (BOA)",
+    secondaryArea: "Secondary area (BIA)",
+    figureLabel: "Example floor plan of an apartment with the area of each room",
+    figureCaption: "Illustrative example. The measurements are made up and only show the format.",
+    rooms: {
+      living: "Living room",
+      kitchen: "Kitchen",
+      bedroom: "Bedroom",
+      hall: "Hall",
+      bathroom: "Bathroom",
+      storage: "Storage",
+    },
+  },
   plannedSections: [
-    { section: "example", title: "Floor plan example" },
     { section: "pricing", title: "Pricing" },
     { section: "faq", title: "Frequently asked questions" },
     { section: "booking", title: "Book a measurement" },

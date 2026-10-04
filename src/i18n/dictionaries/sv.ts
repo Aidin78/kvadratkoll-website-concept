@@ -137,8 +137,32 @@ const sv: Dictionary = {
       },
     ],
   },
+  example: {
+    eyebrow: "Exempel",
+    title: "Så kan ett mätunderlag se ut",
+    description:
+      "Planritningen visar arean för varje rum, med boarea och biarea redovisade var för sig.",
+    includesTitle: "Underlaget kan innehålla",
+    includes: [
+      "Area per rum",
+      "Boarea (BOA) och biarea (BIA) redovisade separat",
+      "Skalenlig planritning med yttermått",
+    ],
+    summaryTitle: "Summering",
+    livingArea: "Boarea (BOA)",
+    secondaryArea: "Biarea (BIA)",
+    figureLabel: "Exempel på planritning av en lägenhet med area per rum",
+    figureCaption: "Illustrativt exempel. Måtten är påhittade och visar endast formatet.",
+    rooms: {
+      living: "Vardagsrum",
+      kitchen: "Kök",
+      bedroom: "Sovrum",
+      hall: "Hall",
+      bathroom: "Badrum",
+      storage: "Förråd",
+    },
+  },
   plannedSections: [
-    { section: "example", title: "Exempel på planritning" },
     { section: "pricing", title: "Priser" },
     { section: "faq", title: "Vanliga frågor" },
     { section: "booking", title: "Boka mätning" },

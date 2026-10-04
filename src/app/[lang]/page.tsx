@@ -1,3 +1,4 @@
+import { FloorPlanExample } from "@/components/sections/FloorPlanExample";
 import { Hero } from "@/components/sections/Hero";
 import { Process } from "@/components/sections/Process";
 import { Services } from "@/components/sections/Services";
@@ -17,6 +18,7 @@ export default async function HomePage() {
       <Services />
       <Process />
       <WhyUs />
+      <FloorPlanExample />
       {/* Sections not built yet. Each is replaced by its own component in components/sections/. */}
       {dict.plannedSections.map(({ section, title }) => (
         <section

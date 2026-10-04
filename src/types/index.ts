@@ -54,3 +54,5 @@ export type Benefit = {
   title: string;
   description: string;
 };
+
+export type FloorPlanRoomId = "living" | "kitchen" | "bedroom" | "hall" | "bathroom" | "storage";

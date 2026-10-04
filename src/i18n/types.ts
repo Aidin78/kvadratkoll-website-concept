@@ -1,5 +1,6 @@
 import type {
   Benefit,
+  FloorPlanRoomId,
   FooterLinkGroup,
   ProcessStep,
   SectionId,
@@ -58,6 +59,19 @@ export type Dictionary = {
     title: string;
     description: string;
     items: Benefit[];
+  };
+  example: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    includesTitle: string;
+    includes: string[];
+    summaryTitle: string;
+    livingArea: string;
+    secondaryArea: string;
+    figureLabel: string;
+    figureCaption: string;
+    rooms: Record<FloorPlanRoomId, string>;
   };
   /** Titles for homepage sections that are not built yet. */
   plannedSections: { section: SectionId; title: string }[];
