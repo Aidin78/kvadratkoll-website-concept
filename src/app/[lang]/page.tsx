@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Process } from "@/components/sections/Process";
 import { Services } from "@/components/sections/Services";
 import { TrustIndicators } from "@/components/sections/TrustIndicators";
+import { WhyUs } from "@/components/sections/WhyUs";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -15,6 +16,7 @@ export default async function HomePage() {
       <TrustIndicators />
       <Services />
       <Process />
+      <WhyUs />
       {/* Sections not built yet. Each is replaced by its own component in components/sections/. */}
       {dict.plannedSections.map(({ section, title }) => (
         <section

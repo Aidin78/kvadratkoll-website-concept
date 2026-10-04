@@ -1,4 +1,5 @@
 import type {
+  Benefit,
   FooterLinkGroup,
   ProcessStep,
   SectionId,
@@ -51,6 +52,12 @@ export type Dictionary = {
     title: string;
     description: string;
     steps: ProcessStep[];
+  };
+  why: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Benefit[];
   };
   /** Titles for homepage sections that are not built yet. */
   plannedSections: { section: SectionId; title: string }[];

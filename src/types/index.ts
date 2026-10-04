@@ -46,3 +46,11 @@ export type ProcessStep = {
   title: string;
   description: string;
 };
+
+export type BenefitIcon = "precision" | "document" | "booking" | "support";
+
+export type Benefit = {
+  icon: BenefitIcon;
+  title: string;
+  description: string;
+};

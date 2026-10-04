@@ -109,8 +109,38 @@ const en: Dictionary = {
       },
     ],
   },
+  why: {
+    eyebrow: "Why Kvadratkoll",
+    title: "Documentation you can rely on",
+    description:
+      "Area affects both price and rent. That is why the measurement should be precise and the result easy to understand.",
+    items: [
+      {
+        icon: "precision",
+        title: "Precise measurements",
+        description:
+          "Every space is measured on site and the area is calculated according to applicable rules.",
+      },
+      {
+        icon: "document",
+        title: "Clear documentation",
+        description:
+          "Results are presented so they are easy to understand for buyers, sellers and estate agents.",
+      },
+      {
+        icon: "booking",
+        title: "Easy booking",
+        description: "Send a request in a few minutes. We get back to you to confirm a time.",
+      },
+      {
+        icon: "support",
+        title: "Help choosing",
+        description:
+          "Not sure what you need? We help you choose the right measurement for your situation.",
+      },
+    ],
+  },
   plannedSections: [
-    { section: "why", title: "Why Kvadratkoll" },
     { section: "example", title: "Floor plan example" },
     { section: "pricing", title: "Pricing" },
     { section: "faq", title: "Frequently asked questions" },

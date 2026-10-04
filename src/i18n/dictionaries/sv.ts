@@ -108,8 +108,36 @@ const sv: Dictionary = {
       },
     ],
   },
+  why: {
+    eyebrow: "Varför Kvadratkoll",
+    title: "Ett underlag du kan lita på",
+    description:
+      "Arean påverkar både pris och hyra. Därför ska mätningen vara noggrann och resultatet lätt att förstå.",
+    items: [
+      {
+        icon: "precision",
+        title: "Noggranna mått",
+        description: "Varje utrymme mäts upp på plats och arean beräknas enligt gällande mätregler.",
+      },
+      {
+        icon: "document",
+        title: "Tydligt underlag",
+        description:
+          "Resultatet presenteras så att det är lätt att förstå för köpare, säljare och mäklare.",
+      },
+      {
+        icon: "booking",
+        title: "Enkel bokning",
+        description: "Skicka en förfrågan på några minuter. Vi återkommer och bekräftar en tid.",
+      },
+      {
+        icon: "support",
+        title: "Hjälp att välja rätt",
+        description: "Osäker på vad du behöver? Vi hjälper dig att välja rätt mätning för ditt ärende.",
+      },
+    ],
+  },
   plannedSections: [
-    { section: "why", title: "Varför Kvadratkoll" },
     { section: "example", title: "Exempel på planritning" },
     { section: "pricing", title: "Priser" },
     { section: "faq", title: "Vanliga frågor" },
