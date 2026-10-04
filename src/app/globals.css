@@ -21,6 +21,9 @@
   --color-accent-hover: #163a33;
   --color-accent-soft: #e3ece8;
 
+  /* Form error text */
+  --color-danger: #b42318;
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
@@ -59,6 +62,15 @@
 
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-accent;
+  }
+
+  /* Custom disclosure markers are drawn in the FAQ */
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
   }
 
   ::selection {
