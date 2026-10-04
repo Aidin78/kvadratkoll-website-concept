@@ -20,7 +20,7 @@ export async function TrustIndicators() {
             // dt holds the label so screen readers announce "label: value".
             <div key={item.label} className="flex flex-col-reverse gap-2 border-l-2 border-accent pl-4 md:pl-5">
               <dt className="text-sm leading-snug text-muted">{item.label}</dt>
-              <dd className="font-display text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
+              <dd className="font-display text-xl font-semibold tracking-tight sm:text-3xl">
                 {item.value}
                 {!item.confirmed && (
                   <span aria-hidden="true" className="text-accent">

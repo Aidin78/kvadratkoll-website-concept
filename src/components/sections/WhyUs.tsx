@@ -1,4 +1,4 @@
-import { CalendarCheck, FileText, MessagesSquare, Ruler, type LucideIcon } from "lucide-react";
+import { BadgeCheck, CalendarCheck, FileText, Ruler, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -8,7 +8,7 @@ const benefitIcons: Record<BenefitIcon, LucideIcon> = {
   precision: Ruler,
   document: FileText,
   booking: CalendarCheck,
-  support: MessagesSquare,
+  certified: BadgeCheck,
 };
 
 export async function WhyUs() {

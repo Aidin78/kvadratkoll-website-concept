@@ -1,17 +1,16 @@
 import type { Dictionary } from "../types";
 
-// Copy is concept placeholder text. Figures and service scope must be confirmed by Kvadratkoll.
+// Facts and prices are taken from kvadratkoll.se (fetched October 2026). The copy is rewritten for the concept.
 const sv: Dictionary = {
   meta: {
-    title: "Kvadratkoll | Areamätning av bostäder och lokaler",
+    title: "Kvadratkoll | Areamätare i Stockholm",
     description:
-      "Professionell areamätning av bostäder och lokaler. Boka en mätning och få ett tydligt underlag för köp, försäljning eller uthyrning.",
+      "Diplomerade areamätare i Stockholm. Vi mäter lägenheter, hus och lokaler enligt SS 21054:2020 och levererar mätbevis, ofta samma dag.",
   },
   common: {
     skipToContent: "Hoppa till innehållet",
     homeLinkLabel: "Kvadratkoll, till startsidan",
     conceptNotice: "Inofficiellt designkoncept, inte Kvadratkolls officiella webbplats.",
-    placeholderLabel: "Platshållare",
   },
   nav: {
     mainLabel: "Huvudmeny",
@@ -20,46 +19,46 @@ const sv: Dictionary = {
     closeMenu: "Stäng meny",
     items: [
       { label: "Tjänster", section: "services" },
-      { label: "Så fungerar det", section: "process" },
+      { label: "Så går det till", section: "process" },
       { label: "Priser", section: "pricing" },
       { label: "Vanliga frågor", section: "faq" },
     ],
     cta: { label: "Boka mätning", section: "booking" },
   },
   hero: {
-    eyebrow: "Areamätning av bostäder och lokaler",
-    title: "Exakt area. Tydligt underlag.",
+    eyebrow: "Areamätare i Stockholm",
+    title: "Exakt area. Tydligt mätbevis.",
     description:
-      "Vi mäter din bostad eller lokal och tar fram ett underlag som går att använda vid köp, försäljning eller uthyrning.",
+      "Vi mäter lägenheter, hus och lokaler enligt SS 21054:2020. Du får ett mätbevis att använda vid försäljning, köp eller uthyrning, ofta samma dag.",
     secondaryCta: { label: "Se priser", section: "pricing" },
     imagePlaceholder: "Bild: bostad / arkitektur (platshållare)",
   },
   trust: {
     title: "Kvadratkoll i korthet",
     items: [
-      { value: "[antal]", label: "genomförda mätningar", confirmed: false },
-      { value: "[antal] år", label: "erfarenhet av areamätning", confirmed: false },
-      { value: "SS 21054", label: "svensk standard för areamätning", confirmed: false },
-      { value: "[område]", label: "där vi utför mätningar", confirmed: false },
+      { value: "7 000+", label: "utförda areamätningar", confirmed: true },
+      { value: "SIS", label: "diplomerade areamätare", confirmed: true },
+      { value: "SS 21054:2020", label: "aktuell svensk standard för areamätning", confirmed: true },
+      { value: "Samma dag", label: "mätbevis som PDF i de flesta fall", confirmed: true },
     ],
     placeholderNote: "Uppgifterna är platshållare och ersätts med bekräftade siffror.",
   },
   services: {
     eyebrow: "Tjänster",
-    title: "Mätning för bostäder och lokaler",
+    title: "Mätning av bostäder och lokaler",
     description:
-      "Oavsett om du ska sälja, köpa eller hyra ut får du ett mätunderlag som är lätt att förstå och använda.",
+      "Främst i Stockholms närområde, och större uppdrag i hela Sverige. Många bostäder och lokaler har en angiven area som inte stämmer på grund av gamla uppgifter.",
     items: [
       {
         id: "residential",
         icon: "house",
         title: "Bostäder",
         description:
-          "Areamätning av villor, radhus, fritidshus och lägenheter, till exempel inför försäljning eller köp.",
+          "Areamätning av lägenheter, hus och villor inför försäljning eller köp. De flesta bostäder jämförs på pris per kvadratmeter, så arean måste stämma.",
         features: [
           "Boarea (BOA) och biarea (BIA)",
-          "Småhus och lägenheter",
-          "Underlag inför köp och försäljning",
+          "Mätbevis enligt SS 21054:2020",
+          "Bostadsrätter, hus och villor",
         ],
       },
       {
@@ -67,86 +66,97 @@ const sv: Dictionary = {
         icon: "building",
         title: "Lokaler",
         description:
-          "Mätning av kontor, butiker och andra lokaler som underlag för uthyrning och förvaltning.",
-        features: ["Lokalarea (LOA)", "Kontor, butik och lager", "Underlag för hyresavtal"],
+          "Korrekta areauppgifter är till nytta för både hyresgäst och hyresvärd när hyran ska sättas.",
+        features: [
+          "Kontor, butiker och andra lokaler",
+          "Underlag för hyressättning",
+          "Offert för större objekt",
+        ],
       },
       {
         id: "floor-plans",
         icon: "floor-plan",
         title: "Planritningar",
         description:
-          "Tydliga planritningar baserade på mätningen, för annonser, renovering eller egen dokumentation.",
+          "Nya skalenliga planritningar framtagna med lasermätare och AutoCAD, till exempel när gamla ritningar inte längre stämmer eller inför en bygganmälan.",
         features: [
-          "Baserade på uppmätta mått",
-          "För annons och renovering",
-          "Digitalt format",
+          "Skalenliga planritningar och relationsritningar",
+          "PDF per mejl och utskrift i A4 per post",
+          "Pris enligt offert",
         ],
       },
     ],
   },
   process: {
-    eyebrow: "Så fungerar det",
-    title: "Från bokning till färdigt underlag",
-    description: "Ett enkelt förlopp i fyra steg. Du vet hela tiden vad som händer härnäst.",
+    eyebrow: "Så går det till",
+    title: "Från bokning till mätbevis",
+    description:
+      "Ingen förberedelse krävs. Möbler och inredning är sällan i vägen och kan flyttas när vi är på plats.",
     steps: [
       {
-        title: "Skicka en förfrågan",
+        title: "Boka mätning",
         description:
-          "Ange adress och typ av bostad eller lokal. Vi återkommer och bekräftar en tid som passar.",
+          "Mejla eller ring. Mätningen kan ofta göras samma dag eller dagen därpå, och vi är flexibla med tider.",
       },
       {
         title: "Mätning på plats",
-        description: "Vi besöker objektet och mäter upp alla utrymmen.",
+        description:
+          "Vi mäter med lasermätare och ritar in alla mått i CAD. Det tar 20 minuter till 2 timmar. Du behöver inte vara där, vi kan hämta nycklar.",
       },
       {
-        title: "Beräkning och ritning",
-        description: "Måtten sammanställs och arean beräknas. Vid behov tas en planritning fram.",
+        title: "Areaberäkning",
+        description: "På kontoret görs den slutliga areaberäkningen utifrån CAD-skissen.",
       },
       {
-        title: "Du får underlaget",
-        description: "Mätresultatet, och planritningen om du beställt en, levereras digitalt.",
+        title: "Mätbevis",
+        description:
+          "Resultatet lämnas muntligt och som PDF, oftast samma dag. Originalet skickas med posten och betalning sker via faktura.",
       },
     ],
   },
   why: {
     eyebrow: "Varför Kvadratkoll",
-    title: "Ett underlag du kan lita på",
+    title: "Ett mätbevis du kan lita på",
     description:
-      "Arean påverkar både pris och hyra. Därför ska mätningen vara noggrann och resultatet lätt att förstå.",
+      "Vid en försäljning är säljaren personligt ansvarig för areauppgiften. Utan mätbevis från en diplomerad areamätare är uppgiften opålitlig.",
     items: [
       {
+        icon: "certified",
+        title: "Diplomerade av SIS",
+        description:
+          "SIS har utfärdat standarden för hur bostäder mäts och diplomerar areamätare efter ett kunskapsprov.",
+      },
+      {
         icon: "precision",
-        title: "Noggranna mått",
-        description: "Varje utrymme mäts upp på plats och arean beräknas enligt gällande mätregler.",
+        title: "Laser och CAD",
+        description:
+          "Alla mått tas med lasermätare och ritas in i CAD-program för högsta möjliga noggrannhet.",
       },
       {
         icon: "document",
-        title: "Tydligt underlag",
+        title: "Juridiskt mätbevis",
         description:
-          "Resultatet presenteras så att det är lätt att förstå för köpare, säljare och mäklare.",
+          "Mätbeviset kan användas vid försäljning och gäller tills SIS utfärdar en ny standard.",
       },
       {
         icon: "booking",
-        title: "Enkel bokning",
-        description: "Skicka en förfrågan på några minuter. Vi återkommer och bekräftar en tid.",
-      },
-      {
-        icon: "support",
-        title: "Hjälp att välja rätt",
-        description: "Osäker på vad du behöver? Vi hjälper dig att välja rätt mätning för ditt ärende.",
+        title: "Flexibla tider",
+        description:
+          "Mätning sker ofta samma dag eller dagen därpå. Har du ont om tid ringer eller sms:ar du oss.",
       },
     ],
   },
   example: {
-    eyebrow: "Exempel",
-    title: "Så kan ett mätunderlag se ut",
+    eyebrow: "Mätbevis",
+    title: "Vad mätbeviset visar",
     description:
-      "Planritningen visar arean för varje rum, med boarea och biarea redovisade var för sig.",
-    includesTitle: "Underlaget kan innehålla",
+      "Mätbeviset redovisar objektets area och hur den fördelar sig mellan boarea och biarea. Illustrationen visar formatet.",
+    includesTitle: "Mätbeviset innehåller",
     includes: [
-      "Area per rum",
-      "Boarea (BOA) och biarea (BIA) redovisade separat",
-      "Skalenlig planritning med yttermått",
+      "Objekt, adress och beställare",
+      "Fastighetsbeteckning eller lägenhetsnummer",
+      "Vilken standard som använts och hur mätningen utförts",
+      "Objektets storlek och fördelning av boarea och biarea",
     ],
     summaryTitle: "Summering",
     livingArea: "Boarea (BOA)",
@@ -162,13 +172,128 @@ const sv: Dictionary = {
       storage: "Förråd",
     },
   },
-  plannedSections: [
-    { section: "pricing", title: "Priser" },
-    { section: "faq", title: "Vanliga frågor" },
-    { section: "booking", title: "Boka mätning" },
-  ],
+  pricing: {
+    eyebrow: "Priser",
+    title: "Fasta priser efter storlek",
+    description: "Alla priser är inklusive moms och baseras på objektets totalarea.",
+    areaColumn: "Totalarea",
+    priceColumn: "Pris inkl. moms",
+    onRequest: "Offert",
+    byAgreement: "Enligt överenskommelse",
+    surchargesTitle: "Tillägg",
+    tables: {
+      apartment: { title: "Lägenhet eller lokal", scope: "Stockholms innerstad" },
+      house: { title: "Hus eller villa", scope: "Närförort" },
+    },
+    surcharges: {
+      "inner-suburb": "Resetillägg närförort (utanför tullarna)",
+      "outer-suburb-apartment": "Resetillägg ytterförort",
+      "sloped-ceiling": "Lägenhet med snedtak eller i etage",
+      cancellation: "Avbokning inom 24 timmar eller utebliven närvaro",
+      outbuilding: "Komplementbyggnad upp till 25 m², per byggnad",
+      "outer-suburb-house": "Resetillägg ytterförort",
+      express: "Expresstillägg vid mycket brådskande ärenden",
+    },
+    notes: [
+      "Betalning sker via faktura efter slutfört uppdrag.",
+      "Kostnaden för en areamätning är avdragsgill i reavinstberäkningen vid försäljning av bostadsrätt eller villa.",
+      "För större objekt, hela föreningar eller flera lägenheter vid samma tillfälle lämnar vi offert.",
+      "Ritningar och relationsritningar prissätts via separat offert.",
+    ],
+  },
+  faq: {
+    eyebrow: "Vanliga frågor",
+    title: "Bra att veta",
+    description: "Hittar du inte svaret? Mejla eller ring oss.",
+    items: [
+      {
+        question: "Varför bör man mäta sin bostad eller lokal?",
+        answer:
+          "Bostäder jämförs ofta på kvadratmeterpris, så varje kvadratmeter är värd mycket. Tidigare areauppgifter stämmer ofta inte: ombyggnader, inredda vindar och tillbyggnader kan ha tillkommit, och mätreglerna har ändrats över tid. En korrekt area minskar risken för tvister vid ägarbyten.",
+      },
+      {
+        question: "Vad är ett mätbevis?",
+        answer:
+          "Ett juridiskt dokument som visar objekt, adress, beställare, fastighetsbeteckning eller lägenhetsnummer, vilken standard som använts, hur mätningen gjorts samt storlek och fördelning av boarea och biarea. Det kan användas vid försäljning och gäller tills SIS utfärdar en ny standard.",
+      },
+      {
+        question: "Vilken standard mäter ni efter?",
+        answer:
+          "Svensk Standard SS 21054:2020, fastställd av SIS. Samma regler används av bland andra Skatteverket, Konsumentverket, Boverket, Hyresgästföreningen och Mäklarsamfundet.",
+      },
+      {
+        question: "Hur lång tid tar en mätning?",
+        answer:
+          "Från 20 minuter upp till 2 timmar, beroende på objektets storlek och utformning.",
+      },
+      {
+        question: "Behöver jag förbereda något eller vara på plats?",
+        answer:
+          "Nej. Ingen förberedelse krävs och möbler är sällan i vägen. Har du svårt att vara på plats kan vi hämta nycklar.",
+      },
+      {
+        question: "När får jag resultatet?",
+        answer:
+          "Ett muntligt besked och mätbeviset som PDF kan oftast levereras samma dag som mätningen. Mätbeviset i original skickas med posten.",
+      },
+      {
+        question: "Kan jag inte mäta själv?",
+        answer:
+          "För att få ett hum om arean går det bra, men det finns många regler att hålla reda på. Vid en försäljning blir du personligt ansvarig för areauppgiften, vilket med otur kan bli en dyr affär.",
+      },
+      {
+        question: "Var utför ni mätningar?",
+        answer:
+          "Främst i Stockholms närområde, men vi utför även större uppdrag i hela Sverige.",
+      },
+    ],
+  },
+  booking: {
+    eyebrow: "Boka mätning",
+    title: "Boka en areamätning",
+    description:
+      "Enklast bokar du via mejl eller telefon. Svarar vi inte kan vi vara ute på jobb. Lämna ett meddelande eller skicka ett sms så ringer vi upp.",
+    emailLabel: "Mejla oss",
+    phoneLabel: "Ring eller sms:a",
+    phoneNote: "Vi ringer upp så snart vi kan.",
+    checklistTitle: "Det här behöver vi från dig",
+    checklist: [
+      "Telefonnummer där vi kan nå dig",
+      "Objektets adress",
+      "Namn på dörren",
+      "Lägenhetsnummer, eller fastighetsbeteckning för villa",
+      "Portkod",
+    ],
+    form: {
+      title: "Skicka en bokningsförfrågan",
+      name: "Namn",
+      phone: "Telefon",
+      email: "E-post",
+      address: "Objektets adress",
+      propertyType: "Typ av objekt",
+      propertyTypes: {
+        apartment: "Lägenhet",
+        house: "Hus eller villa",
+        premises: "Lokal",
+      },
+      unitNumber: "Lägenhetsnummer eller fastighetsbeteckning",
+      unitNumberHint: "Fastighetsbeteckning gäller för villor.",
+      doorCode: "Portkod",
+      message: "Meddelande",
+      optional: "valfritt",
+      submit: "Skicka förfrågan",
+      submitting: "Skickar…",
+      successTitle: "Tack för din förfrågan",
+      successText: "I den riktiga tjänsten skulle Kvadratkoll höra av sig för att bekräfta en tid.",
+      errorText: "Något gick fel. Försök igen eller mejla oss direkt.",
+      demoNotice:
+        "Konceptversion: formuläret skickar inga uppgifter. Mejla eller ring för att boka på riktigt.",
+    },
+  },
   footer: {
-    tagline: "Areamätning av bostäder och lokaler.",
+    tagline: "Diplomerade areamätare i Stockholm.",
+    contactTitle: "Kontakt",
+    orgNumberLabel: "Org.nr",
     groups: [
       {
         title: "Tjänster",
@@ -181,7 +306,7 @@ const sv: Dictionary = {
       {
         title: "Information",
         links: [
-          { label: "Så fungerar det", section: "process" },
+          { label: "Så går det till", section: "process" },
           { label: "Priser", section: "pricing" },
           { label: "Vanliga frågor", section: "faq" },
         ],

@@ -1,11 +1,14 @@
 import type {
   Benefit,
+  FaqItem,
   FloorPlanRoomId,
   FooterLinkGroup,
+  PriceTableId,
   ProcessStep,
-  SectionId,
+  PropertyType,
   SectionLink,
   Service,
+  SurchargeId,
   TrustIndicator,
 } from "@/types";
 
@@ -19,7 +22,6 @@ export type Dictionary = {
     skipToContent: string;
     homeLinkLabel: string;
     conceptNotice: string;
-    placeholderLabel: string;
   };
   nav: {
     mainLabel: string;
@@ -73,10 +75,59 @@ export type Dictionary = {
     figureCaption: string;
     rooms: Record<FloorPlanRoomId, string>;
   };
-  /** Titles for homepage sections that are not built yet. */
-  plannedSections: { section: SectionId; title: string }[];
+  pricing: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    areaColumn: string;
+    priceColumn: string;
+    onRequest: string;
+    byAgreement: string;
+    surchargesTitle: string;
+    tables: Record<PriceTableId, { title: string; scope: string }>;
+    surcharges: Record<SurchargeId, string>;
+    notes: string[];
+  };
+  faq: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: FaqItem[];
+  };
+  booking: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    emailLabel: string;
+    phoneLabel: string;
+    phoneNote: string;
+    checklistTitle: string;
+    checklist: string[];
+    form: {
+      title: string;
+      name: string;
+      phone: string;
+      email: string;
+      address: string;
+      propertyType: string;
+      propertyTypes: Record<PropertyType, string>;
+      unitNumber: string;
+      unitNumberHint: string;
+      doorCode: string;
+      message: string;
+      optional: string;
+      submit: string;
+      submitting: string;
+      successTitle: string;
+      successText: string;
+      errorText: string;
+      demoNotice: string;
+    };
+  };
   footer: {
     tagline: string;
+    contactTitle: string;
+    orgNumberLabel: string;
     groups: FooterLinkGroup[];
   };
 };

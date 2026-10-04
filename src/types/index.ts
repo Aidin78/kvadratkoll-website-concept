@@ -28,7 +28,7 @@ export type FooterLinkGroup = {
 export type TrustIndicator = {
   value: string;
   label: string;
-  /** False until the figure is confirmed by Kvadratkoll. Rendered with a placeholder marker. */
+  /** False until the figure is confirmed. Rendered with a placeholder marker. */
   confirmed: boolean;
 };
 
@@ -47,7 +47,7 @@ export type ProcessStep = {
   description: string;
 };
 
-export type BenefitIcon = "precision" | "document" | "booking" | "support";
+export type BenefitIcon = "precision" | "document" | "booking" | "certified";
 
 export type Benefit = {
   icon: BenefitIcon;
@@ -56,3 +56,35 @@ export type Benefit = {
 };
 
 export type FloorPlanRoomId = "living" | "kitchen" | "bedroom" | "hall" | "bathroom" | "storage";
+
+export type PriceTableId = "apartment" | "house";
+
+export type SurchargeId =
+  | "inner-suburb"
+  | "outer-suburb-apartment"
+  | "sloped-ceiling"
+  | "cancellation"
+  | "outbuilding"
+  | "outer-suburb-house"
+  | "express";
+
+export type PriceRow = {
+  minArea: number;
+  /** Null for the open-ended top bracket, e.g. "300+ m²". */
+  maxArea: number | null;
+  /** Price in SEK including VAT. Null means price on request (offert). */
+  price: number | null;
+};
+
+export type PriceTable = {
+  id: PriceTableId;
+  rows: PriceRow[];
+  surcharges: SurchargeId[];
+};
+
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+export type PropertyType = "apartment" | "house" | "premises";
