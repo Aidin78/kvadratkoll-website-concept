@@ -25,8 +25,8 @@ export default function GlobalNotFound() {
         <main className="flex flex-1 items-center">
           <div className="mx-auto w-full max-w-site px-5 py-20 sm:px-8 lg:px-10">
             <Image src={images.logo} alt={site.name} className="h-6 w-auto" sizes="220px" />
-            <p className="mt-16 mb-4 font-display text-sm font-medium tracking-wide text-accent">404</p>
-            <h1 className="text-4xl leading-display font-semibold sm:text-5xl">Sidan hittades inte</h1>
+            <p className="label-mono mt-16 mb-4 text-accent">404</p>
+            <h1 className="text-5xl leading-display font-medium tracking-tighter sm:text-7xl">Sidan hittades inte</h1>
             <p lang="en" className="mt-3 text-lg text-muted">
               Page not found
             </p>

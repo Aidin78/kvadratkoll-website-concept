@@ -2,7 +2,7 @@
 
 import { CircleCheck } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button, ButtonArrow } from "@/components/ui/Button";
 import { FormField, fieldStyles } from "@/components/ui/FormField";
 import type { Dictionary } from "@/i18n/types";
 import { isPropertyType, propertyTypes, submitBookingRequest } from "@/lib/booking";
@@ -51,7 +51,7 @@ export function BookingForm({ labels }: BookingFormProps) {
     return (
       <div ref={successRef} tabIndex={-1} role="status" className="flex flex-col items-start gap-4 py-8">
         <CircleCheck className="size-10 text-accent" aria-hidden="true" strokeWidth={1.5} />
-        <h3 className="text-2xl font-semibold">{labels.successTitle}</h3>
+        <h3 className="text-3xl font-medium tracking-tight">{labels.successTitle}</h3>
         <p className="text-muted">{labels.successText}</p>
       </div>
     );
@@ -59,7 +59,7 @@ export function BookingForm({ labels }: BookingFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
-      <h3 className="text-xl font-semibold sm:col-span-2">{labels.title}</h3>
+      <h3 className="mb-2 text-2xl font-medium tracking-tight sm:col-span-2">{labels.title}</h3>
 
       <FormField id="booking-name" label={labels.name}>
         <input id="booking-name" name="name" required autoComplete="name" className={fieldStyles} />
@@ -110,6 +110,7 @@ export function BookingForm({ labels }: BookingFormProps) {
         </p>
         <Button type="submit" size="lg" disabled={status === "submitting"} className="w-full sm:w-auto sm:self-start">
           {status === "submitting" ? labels.submitting : labels.submit}
+          {status !== "submitting" && <ButtonArrow />}
         </Button>
         <p className="text-xs text-muted">{labels.demoNotice}</p>
       </div>

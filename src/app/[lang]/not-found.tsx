@@ -12,8 +12,8 @@ export default async function NotFound() {
     <section aria-labelledby="not-found-title" className="section-y">
       <Container>
         <div className="max-w-2xl">
-          <p className="mb-4 font-display text-sm font-medium tracking-wide text-accent">{notFound.eyebrow}</p>
-          <h1 id="not-found-title" className="text-4xl leading-display font-semibold sm:text-5xl">
+          <p className="label-mono mb-4 text-accent">{notFound.eyebrow}</p>
+          <h1 id="not-found-title" className="text-5xl leading-display font-medium tracking-tighter sm:text-7xl">
             {notFound.title}
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted">{notFound.description}</p>
