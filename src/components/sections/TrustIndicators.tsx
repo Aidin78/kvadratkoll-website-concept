@@ -21,12 +21,12 @@ export async function TrustIndicators() {
               className={cn(
                 "flex flex-col-reverse justify-end gap-3 border-line py-4 pr-4 sm:pr-6",
                 // Two columns on phones and tablets, four in one row on desktop
-                index % 2 === 1 ? "border-l pl-4 sm:pl-6" : "lg:pl-8",
-                index > 0 ? "lg:border-l lg:pl-8" : "lg:pl-0",
+                index % 2 === 1 && "border-l pl-4 sm:pl-6",
+                index > 0 && "lg:border-l lg:pl-8",
               )}
             >
               <dt className="max-w-48 text-sm leading-snug text-muted">{item.label}</dt>
-              <dd className="font-display text-3xl font-medium tracking-tighter sm:text-4xl xl:text-5xl">
+              <dd className="font-display text-2xl font-medium tracking-tighter sm:text-4xl xl:text-5xl">
                 {item.value}
                 {!item.confirmed && (
                   <span aria-hidden="true" className="text-accent">
